@@ -1,8 +1,8 @@
 /**
- * 7th Heaven Framework: Utilities
+ * Jacqueline Framework: Utilities
  *
- * @package	7th Heaven
- * @since	7th Heaven 1.0
+ * @package	Jacqueline
+ * @since	Jacqueline 1.0
  */
 
 
@@ -10,94 +10,94 @@
 ---------------------------------------------------------------- */
 
 // Global variables storage
-if (typeof 7th Heaven_STORAGE == 'undefined') var 7th Heaven_STORAGE = {};
+if (typeof Jacqueline_STORAGE == 'undefined') var Jacqueline_STORAGE = {};
 
 // Get global variable
-function 7th Heaven_storage_get(var_name) {
+function Jacqueline_storage_get(var_name) {
 	"use strict";
-	return 7th Heaven_isset(7th Heaven_STORAGE[var_name]) ? 7th Heaven_STORAGE[var_name] : '';
+	return Jacqueline_isset(Jacqueline_STORAGE[var_name]) ? Jacqueline_STORAGE[var_name] : '';
 }
 
 // Set global variable
-function 7th Heaven_storage_set(var_name, value) {
+function Jacqueline_storage_set(var_name, value) {
 	"use strict";
-	7th Heaven_STORAGE[var_name] = value;
+	Jacqueline_STORAGE[var_name] = value;
 }
 
 // Inc/Dec global variable with specified value
-function 7th Heaven_storage_inc(var_name) {
+function Jacqueline_storage_inc(var_name) {
 	"use strict";
 	var value = arguments[1]==undefined ? 1 : arguments[1];
-	7th Heaven_STORAGE[var_name] += value;
+	Jacqueline_STORAGE[var_name] += value;
 }
 
 // Concatenate global variable with specified value
-function 7th Heaven_storage_concat(var_name, value) {
+function Jacqueline_storage_concat(var_name, value) {
 	"use strict";
-	7th Heaven_STORAGE[var_name] += ''+value;
+	Jacqueline_STORAGE[var_name] += ''+value;
 }
 
 // Get global array element
-function 7th Heaven_storage_get_array(var_name, key) {
+function Jacqueline_storage_get_array(var_name, key) {
 	"use strict";
-	return 7th Heaven_isset(7th Heaven_STORAGE[var_name][key]) ? 7th Heaven_STORAGE[var_name][key] : '';
+	return Jacqueline_isset(Jacqueline_STORAGE[var_name][key]) ? Jacqueline_STORAGE[var_name][key] : '';
 }
 
 // Set global array element
-function 7th Heaven_storage_set_array(var_name, key, value) {
+function Jacqueline_storage_set_array(var_name, key, value) {
 	"use strict";
-	if (!7th Heaven_isset(7th Heaven_STORAGE[var_name])) 7th Heaven_STORAGE[var_name] = {};
-	7th Heaven_STORAGE[var_name][key] = value;
+	if (!Jacqueline_isset(Jacqueline_STORAGE[var_name])) Jacqueline_STORAGE[var_name] = {};
+	Jacqueline_STORAGE[var_name][key] = value;
 }
 
 // Inc/Dec global array element with specified value
-function 7th Heaven_storage_inc_array(var_name, key) {
+function Jacqueline_storage_inc_array(var_name, key) {
 	"use strict";
 	var value = arguments[2]==undefined ? 1 : arguments[2];
-	7th Heaven_STORAGE[var_name][key] += value;
+	Jacqueline_STORAGE[var_name][key] += value;
 }
 
 // Concatenate global array element with specified value
-function 7th Heaven_storage_concat_array(var_name, key, value) {
+function Jacqueline_storage_concat_array(var_name, key, value) {
 	"use strict";
-	7th Heaven_STORAGE[var_name][key] += ''+value;
+	Jacqueline_STORAGE[var_name][key] += ''+value;
 }
 
 /* PHP-style functions
 ---------------------------------------------------------------- */
-function 7th Heaven_isset(obj) {
+function Jacqueline_isset(obj) {
 	"use strict";
 	return typeof(obj) != 'undefined';
 }
 
-function 7th Heaven_empty(obj) {
+function Jacqueline_empty(obj) {
 	"use strict";
-	return typeof(obj) == 'undefined' || (typeof(obj)=='object' && obj == null) || (typeof(obj)=='array' && obj.length == 0) || (typeof(obj)=='string' && 7th Heaven_alltrim(obj)=='') || obj===0;
+	return typeof(obj) == 'undefined' || (typeof(obj)=='object' && obj == null) || (typeof(obj)=='array' && obj.length == 0) || (typeof(obj)=='string' && Jacqueline_alltrim(obj)=='') || obj===0;
 }
 
-function 7th Heaven_is_array(obj)  {
+function Jacqueline_is_array(obj)  {
 	"use strict";
 	return typeof(obj)=='array';
 }
 
-function 7th Heaven_is_object(obj)  {
+function Jacqueline_is_object(obj)  {
 	"use strict";
 	return typeof(obj)=='object';
 }
 
-function 7th Heaven_clone_object(obj) {
+function Jacqueline_clone_object(obj) {
 	"use strict";
 	if (obj == null || typeof(obj) != 'object') {
 		return obj;
 	}
 	var temp = {};
 	for (var key in obj) {
-		temp[key] = 7th Heaven_clone_object(obj[key]);
+		temp[key] = Jacqueline_clone_object(obj[key]);
 	}
 	return temp;
 }
 
-function 7th Heaven_merge_objects(obj1, obj2)  {
+function Jacqueline_merge_objects(obj1, obj2)  {
 	"use strict";
 	for (var i in obj2) obj1[i] = obj2[i];
 	return obj1;
@@ -106,7 +106,7 @@ function 7th Heaven_merge_objects(obj1, obj2)  {
 /* String functions
 ---------------------------------------------------------------- */
 
-function 7th Heaven_in_list(str, list) {
+function Jacqueline_in_list(str, list) {
 	"use strict";
 	var delim = arguments[2] ? arguments[2] : '|';
 	var icase = arguments[3] ? arguments[3] : true;
@@ -125,7 +125,7 @@ function 7th Heaven_in_list(str, list) {
 	return retval;
 }
 
-function 7th Heaven_alltrim(str) {
+function Jacqueline_alltrim(str) {
 	"use strict";
 	var dir = arguments[1] ? arguments[1] : 'a';
 	var rez = '';
@@ -149,17 +149,17 @@ function 7th Heaven_alltrim(str) {
 	return str.substring(start, end+1);
 }
 
-function 7th Heaven_ltrim(str) {
+function Jacqueline_ltrim(str) {
 	"use strict";
-	return 7th Heaven_alltrim(str, 'l');
+	return Jacqueline_alltrim(str, 'l');
 }
 
-function 7th Heaven_rtrim(str) {
+function Jacqueline_rtrim(str) {
 	"use strict";
-	return 7th Heaven_alltrim(str, 'r');
+	return Jacqueline_alltrim(str, 'r');
 }
 
-function 7th Heaven_padl(str, len) {
+function Jacqueline_padl(str, len) {
 	"use strict";
 	var ch = arguments[2] ? arguments[2] : ' ';
 	var rez = str.substr(0,len);
@@ -170,7 +170,7 @@ function 7th Heaven_padl(str, len) {
 	return rez;
 }
 
-function 7th Heaven_padr(str, len) {
+function Jacqueline_padr(str, len) {
 	"use strict";
 	var ch = arguments[2] ? arguments[2] : ' ';
 	var rez = str.substr(0,len);
@@ -181,7 +181,7 @@ function 7th Heaven_padr(str, len) {
 	return rez;
 }
 
-function 7th Heaven_padc(str, len) {
+function Jacqueline_padc(str, len) {
 	"use strict";
 	var ch = arguments[2] ? arguments[2] : ' ';
 	var rez = str.substr(0,len);
@@ -192,7 +192,7 @@ function 7th Heaven_padc(str, len) {
 	return rez+(rez.length<len ? ch : '');
 }
 
-function 7th Heaven_replicate(str, num) {
+function Jacqueline_replicate(str, num) {
 	"use strict";
 	var rez = '';
 	for (var i=0; i<num; i++) {
@@ -209,7 +209,7 @@ function 7th Heaven_replicate(str, num) {
 // Round number to specified precision. 
 // For example: num=1.12345, prec=2,  rounded=1.12
 //              num=12345,   prec=-2, rounded=12300
-function 7th Heaven_round_number(num) {
+function Jacqueline_round_number(num) {
 	"use strict";
 	var precision = arguments[1] ? arguments[1] : 0;
 	var p = Math.pow(10, precision);
@@ -218,7 +218,7 @@ function 7th Heaven_round_number(num) {
 
 // Clear number from any characters and append it with 0 to desired precision
 // For example: num=test1.12dd, prec=3, cleared=1.120
-function 7th Heaven_clear_number(num) {
+function Jacqueline_clear_number(num) {
 	"use strict";
 	var precision = arguments[1] ? arguments[1] : 0;
 	var defa = arguments[2] ? arguments[2] : 0;
@@ -251,13 +251,13 @@ function 7th Heaven_clear_number(num) {
 }
 
 // Convert number from decimal to hex
-function 7th Heaven_dec2hex(n) { 
+function Jacqueline_dec2hex(n) { 
 	"use strict";
 	return Number(n).toString(16);
 }
 
 // Convert number from hex to decimal
-function 7th Heaven_hex2dec(hex) {
+function Jacqueline_hex2dec(hex) {
 	"use strict";
 	return parseInt(hex,16); 
 }
@@ -267,7 +267,7 @@ function 7th Heaven_hex2dec(hex) {
 /* Array manipulations
 ---------------------------------------------------------------- */
 
-function 7th Heaven_in_array(val, thearray)  {
+function Jacqueline_in_array(val, thearray)  {
 	"use strict";
 	var rez = false;
 	for (var i=0; i<thearray.length-1; i++)  {
@@ -279,7 +279,7 @@ function 7th Heaven_in_array(val, thearray)  {
 	return rez;
 }
 
-function 7th Heaven_sort_array(thearray)  {
+function Jacqueline_sort_array(thearray)  {
 	"use strict";
 	var caseSensitive = arguments[1] ? arguments[1] : false;
 	for (var x=0; x<thearray.length-1; x++)  {
@@ -309,7 +309,7 @@ function 7th Heaven_sort_array(thearray)  {
 
 // Return array[Year, Month, Day, Hours, Minutes, Seconds]
 // from string: Year[-/.]Month[-/.]Day[T ]Hours:Minutes:Seconds
-function 7th Heaven_parse_date(dt) {
+function Jacqueline_parse_date(dt) {
 	"use strict";
 	dt = dt.replace(/\//g, '-').replace(/\./g, '-').replace(/T/g, ' ').split('+')[0];
 	var dt2 = dt.split(' ');
@@ -320,18 +320,18 @@ function 7th Heaven_parse_date(dt) {
 }
 
 // Return difference string between two dates
-function 7th Heaven_get_date_difference(dt1) {
+function Jacqueline_get_date_difference(dt1) {
 	"use strict";
 	var dt2 = arguments[1]!==undefined ? arguments[1] : '';
 	var short_date = arguments[2]!==undefined ? arguments[2] : true;
 	var sec = arguments[3]!==undefined ? arguments[3] : false;
-	var a1 = 7th Heaven_parse_date(dt1);
+	var a1 = Jacqueline_parse_date(dt1);
 	dt1 = Date.UTC(a1[0], a1[1], a1[2], a1[3], a1[4], a1[5]);
 	if (dt2 == '') {
 		dt2 = new Date();
 		var a2 = [dt2.getFullYear(), dt2.getMonth()+1, dt2.getDate(), dt2.getHours(), dt2.getMinutes(), dt2.getSeconds()];
 	} else
-		var a2 = 7th Heaven_parse_date(dt2);
+		var a2 = Jacqueline_parse_date(dt2);
 	dt2 = Date.UTC(a2[0], a2[1], a2[2], a2[3], a2[4], a2[5]);
 	var diff = Math.round((dt2 - dt1)/1000);
 	var days = Math.floor(diff / (24*3600));
@@ -357,12 +357,12 @@ function 7th Heaven_get_date_difference(dt1) {
 /* Colors functions
 ---------------------------------------------------------------- */
 
-function 7th Heaven_hex2rgb(hex) {
+function Jacqueline_hex2rgb(hex) {
 	hex = parseInt(((hex.indexOf('#') > -1) ? hex.substring(1) : hex), 16);
 	return {r: hex >> 16, g: (hex & 0x00FF00) >> 8, b: (hex & 0x0000FF)};
 }
 
-function 7th Heaven_rgb2hex(color) {
+function Jacqueline_rgb2hex(color) {
 	"use strict";
 	var aRGB;
 	color = color.replace(/\s/g,"").toLowerCase();
@@ -382,7 +382,7 @@ function 7th Heaven_rgb2hex(color) {
 	return (color.substr(0,1)!='#' ? '#' : '') + color;
 }
 
-function 7th Heaven_components2hex(r,g,b) {
+function Jacqueline_components2hex(r,g,b) {
 	"use strict";
 	return '#'+
 		Number(r).toString(16).toUpperCase().replace(/^(.)$/,'0$1') +
@@ -390,9 +390,9 @@ function 7th Heaven_components2hex(r,g,b) {
 		Number(b).toString(16).toUpperCase().replace(/^(.)$/,'0$1');
 }
 
-function 7th Heaven_rgb2components(color) {
+function Jacqueline_rgb2components(color) {
 	"use strict";
-	color = 7th Heaven_rgb2hex(color);
+	color = Jacqueline_rgb2hex(color);
 	var matches = color.match(/^#?([\dabcdef]{2})([\dabcdef]{2})([\dabcdef]{2})$/i);
 	if (!matches) return false;
 	for (var i=1, rgb = new Array(3); i<=3; i++)
@@ -400,17 +400,17 @@ function 7th Heaven_rgb2components(color) {
 	return rgb;
 }
 
-function 7th Heaven_hex2hsb(hex) {
+function Jacqueline_hex2hsb(hex) {
 	"use strict";
-	return 7th Heaven_rgb2hsb(7th Heaven_hex2rgb(hex));
+	return Jacqueline_rgb2hsb(Jacqueline_hex2rgb(hex));
 }
 
-function 7th Heaven_hsb2hex(hsb) {
-	var rgb = 7th Heaven_hsb2rgb(hsb);
-	return 7th Heaven_components2hex(rgb.r, rgb.g, rgb.b);
+function Jacqueline_hsb2hex(hsb) {
+	var rgb = Jacqueline_hsb2rgb(hsb);
+	return Jacqueline_components2hex(rgb.r, rgb.g, rgb.b);
 }
 
-function 7th Heaven_rgb2hsb(rgb) {
+function Jacqueline_rgb2hsb(rgb) {
 	"use strict";
 	var hsb = {};
 	hsb.b = Math.max(Math.max(rgb.r,rgb.g),rgb.b);
@@ -428,7 +428,7 @@ function 7th Heaven_rgb2hsb(rgb) {
 	return hsb;
 }
 
-function 7th Heaven_hsb2rgb(hsb) {
+function Jacqueline_hsb2rgb(hsb) {
 	var rgb = {};
 	var h = Math.round(hsb.h);
 	var s = Math.round(hsb.s*255/100);
@@ -451,7 +451,7 @@ function 7th Heaven_hsb2rgb(hsb) {
 	return { r:Math.round(rgb.r), g:Math.round(rgb.g), b:Math.round(rgb.b) };
 }
 
-function 7th Heaven_color_picker(){
+function Jacqueline_color_picker(){
 	"use strict";
 	var id = arguments[0] ? arguments[0] : "iColorPicker"+Math.round(Math.random()*1000);
 	var colors = arguments[1] ? arguments[1] : 
@@ -488,7 +488,7 @@ function 7th Heaven_color_picker(){
 		.addClass("iColorPickerTable")
 		.on('mouseover', 'thead td', function(){
 			"use strict";
-			var aaa = 7th Heaven_rgb2hex(jQuery(this).css('background-color'));
+			var aaa = Jacqueline_rgb2hex(jQuery(this).css('background-color'));
 			jQuery('#'+id+'_colorPreview').css('background',aaa);
 			jQuery('#'+id+'_colorPreview input').val(aaa);
 		})
@@ -522,7 +522,7 @@ function 7th Heaven_color_picker(){
 			"use strict";
 			var fld  = jQuery('#'+id).data('field');
 			var func = jQuery('#'+id).data('func');
-			var aaa  = 7th Heaven_rgb2hex(jQuery(this).css('background-color'));
+			var aaa  = Jacqueline_rgb2hex(jQuery(this).css('background-color'));
 			if (func!=null && func!='undefined') {
 				func(fld, aaa);
 			} else {
@@ -550,7 +550,7 @@ function 7th Heaven_color_picker(){
 				while (rgb[0]<0xF || rgb[1]<0xF || rgb[2]<0xF) {
 					if (i%18==0) out += (i>0 ? '</tr>' : '') + '<tr>';
 					i++;
-					out += '<td style="background-color:'+7th Heaven_components2hex(rgb[0]*16+rgb[0],rgb[1]*16+rgb[1],rgb[2]*16+rgb[2])+'">&nbsp;</td>';
+					out += '<td style="background-color:'+Jacqueline_components2hex(rgb[0]*16+rgb[0],rgb[1]*16+rgb[1],rgb[2]*16+rgb[2])+'">&nbsp;</td>';
 					rgb[2]+=3;
 					if (rgb[2]>0xF) {
 						rgb[1]+=3;
@@ -620,7 +620,7 @@ function 7th Heaven_color_picker(){
 	return id;
 }
 
-function 7th Heaven_color_picker_show(id, fld, func) { 
+function Jacqueline_color_picker_show(id, fld, func) { 
 	"use strict";
 	if (id===null || id==='') {
 		id = jQuery('.iColorPickerTable').attr('id');
@@ -649,7 +649,7 @@ function 7th Heaven_color_picker_show(id, fld, func) {
 			'height':'100%'
 		})
 		.fadeIn(500);
-	var def = fld.val().substr(0, 1)=='#' ? fld.val() : 7th Heaven_rgb2hex(fld.css('backgroundColor'));
+	var def = fld.val().substr(0, 1)=='#' ? fld.val() : Jacqueline_rgb2hex(fld.css('backgroundColor'));
 	jQuery('#'+id+'_colorPreview input,#'+id+'_colorOriginal input').val(def);
 	jQuery('#'+id+'_colorPreview,#'+id+'_colorOriginal').css('background',def);
 }
@@ -659,7 +659,7 @@ function 7th Heaven_color_picker_show(id, fld, func) {
 /* Cookies manipulations
 ---------------------------------------------------------------- */
 
-function 7th Heaven_get_cookie(name) {
+function Jacqueline_get_cookie(name) {
 	"use strict";
 	var defa = arguments[1]!=undefined ? arguments[1] : null;
 	var start = document.cookie.indexOf(name + '=');
@@ -676,7 +676,7 @@ function 7th Heaven_get_cookie(name) {
 }
 
 
-function 7th Heaven_set_cookie(name, value, expires, path, domain, secure) {
+function Jacqueline_set_cookie(name, value, expires, path, domain, secure) {
 	"use strict";
 	var expires = arguments[2]!=undefined ? arguments[2] : 0;
 	var path    = arguments[3]!=undefined ? arguments[3] : '/';
@@ -697,11 +697,11 @@ function 7th Heaven_set_cookie(name, value, expires, path, domain, secure) {
 }
 
 
-function 7th Heaven_del_cookie(name, path, domain) {
+function Jacqueline_del_cookie(name, path, domain) {
 	"use strict";
 	var path   = arguments[1]!=undefined ? arguments[1] : '/';
 	var domain = arguments[2]!=undefined ? arguments[2] : '';
-	if (7th Heaven_get_cookie(name))
+	if (Jacqueline_get_cookie(name))
 		document.cookie = name + '=' + ((path) ? ';path=' + path : '')
 				+ ((domain) ? ';domain=' + domain : '')
 				+ ';expires=Thu, 01-Jan-1970 00:00:01 GMT';
@@ -712,13 +712,13 @@ function 7th Heaven_del_cookie(name, path, domain) {
 /* ListBox and ComboBox manipulations
 ---------------------------------------------------------------- */
 
-function 7th Heaven_clear_listbox(box) {
+function Jacqueline_clear_listbox(box) {
 	"use strict";
 	for (var i=box.options.length-1; i>=0; i--)
 		box.options[i] = null;
 }
 
-function 7th Heaven_add_listbox_item(box, val, text) {
+function Jacqueline_add_listbox_item(box, val, text) {
 	"use strict";
 	var item = new Option();
 	item.value = val;
@@ -726,7 +726,7 @@ function 7th Heaven_add_listbox_item(box, val, text) {
     box.options.add(item);
 }
 
-function 7th Heaven_del_listbox_item_by_value(box, val) {
+function Jacqueline_del_listbox_item_by_value(box, val) {
 	"use strict";
 	for (var i=0; i<box.options.length; i++) {
 		if (box.options[i].value == val) {
@@ -736,7 +736,7 @@ function 7th Heaven_del_listbox_item_by_value(box, val) {
 	}
 }
 
-function 7th Heaven_del_listbox_item_by_text(box, txt) {
+function Jacqueline_del_listbox_item_by_text(box, txt) {
 	"use strict";
 	for (var i=0; i<box.options.length; i++) {
 		if (box.options[i].text == txt) {
@@ -746,7 +746,7 @@ function 7th Heaven_del_listbox_item_by_text(box, txt) {
 	}
 }
 
-function 7th Heaven_find_listbox_item_by_value(box, val) {
+function Jacqueline_find_listbox_item_by_value(box, val) {
 	"use strict";
 	var idx = -1;
 	for (var i=0; i<box.options.length; i++) {
@@ -758,7 +758,7 @@ function 7th Heaven_find_listbox_item_by_value(box, val) {
 	return idx;
 }
 
-function 7th Heaven_find_listbox_item_by_text(box, txt) {
+function Jacqueline_find_listbox_item_by_text(box, txt) {
 	"use strict";
 	var idx = -1;
 	for (var i=0; i<box.options.length; i++) {
@@ -770,21 +770,21 @@ function 7th Heaven_find_listbox_item_by_text(box, txt) {
 	return idx;
 }
 
-function 7th Heaven_select_listbox_item_by_value(box, val) {
+function Jacqueline_select_listbox_item_by_value(box, val) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		box.options[i].selected = (val == box.options[i].value);
 	}
 }
 
-function 7th Heaven_select_listbox_item_by_text(box, txt) {
+function Jacqueline_select_listbox_item_by_text(box, txt) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		box.options[i].selected = (txt == box.options[i].text);
 	}
 }
 
-function 7th Heaven_get_listbox_values(box) {
+function Jacqueline_get_listbox_values(box) {
 	"use strict";
 	var delim = arguments[1] ? arguments[1] : ',';
 	var str = '';
@@ -794,7 +794,7 @@ function 7th Heaven_get_listbox_values(box) {
 	return str;
 }
 
-function 7th Heaven_get_listbox_texts(box) {
+function Jacqueline_get_listbox_texts(box) {
 	"use strict";
 	var delim = arguments[1] ? arguments[1] : ',';
 	var str = '';
@@ -804,7 +804,7 @@ function 7th Heaven_get_listbox_texts(box) {
 	return str;
 }
 
-function 7th Heaven_sort_listbox(box)  {
+function Jacqueline_sort_listbox(box)  {
 	"use strict";
 	var temp_opts = new Array();
 	var temp = new Option();
@@ -825,7 +825,7 @@ function 7th Heaven_sort_listbox(box)  {
 	}
 }
 
-function 7th Heaven_get_listbox_selected_index(box) {
+function Jacqueline_get_listbox_selected_index(box) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		if (box.options[i].selected)
@@ -834,7 +834,7 @@ function 7th Heaven_get_listbox_selected_index(box) {
 	return -1;
 }
 
-function 7th Heaven_get_listbox_selected_value(box) {
+function Jacqueline_get_listbox_selected_value(box) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		if (box.options[i].selected) {
@@ -844,7 +844,7 @@ function 7th Heaven_get_listbox_selected_value(box) {
 	return null;
 }
 
-function 7th Heaven_get_listbox_selected_text(box) {
+function Jacqueline_get_listbox_selected_text(box) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		if (box.options[i].selected) {
@@ -854,7 +854,7 @@ function 7th Heaven_get_listbox_selected_text(box) {
 	return null;
 }
 
-function 7th Heaven_get_listbox_selected_option(box) {
+function Jacqueline_get_listbox_selected_option(box) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		if (box.options[i].selected) {
@@ -869,21 +869,21 @@ function 7th Heaven_get_listbox_selected_option(box) {
 /* Radio buttons manipulations
 ---------------------------------------------------------------- */
 
-function 7th Heaven_get_radio_value(radioGroupObj) {
+function Jacqueline_get_radio_value(radioGroupObj) {
 	"use strict";
 	for (var i=0; i < radioGroupObj.length; i++)
 		if (radioGroupObj[i].checked) return radioGroupObj[i].value;
 	return null;
 }
 
-function 7th Heaven_set_radio_checked_by_num(radioGroupObj, num) {
+function Jacqueline_set_radio_checked_by_num(radioGroupObj, num) {
 	"use strict";
 	for (var i=0; i < radioGroupObj.length; i++)
 		if (radioGroupObj[i].checked && i!=num) radioGroupObj[i].checked=false;
 		else if (i==num) radioGroupObj[i].checked=true;
 }
 
-function 7th Heaven_set_radio_checked_by_value(radioGroupObj, val) {
+function Jacqueline_set_radio_checked_by_value(radioGroupObj, val) {
 	"use strict";
 	for (var i=0; i < radioGroupObj.length; i++)
 		if (radioGroupObj[i].checked && radioGroupObj[i].value!=val) radioGroupObj[i].checked=false;
@@ -897,7 +897,7 @@ function 7th Heaven_set_radio_checked_by_value(radioGroupObj, val) {
 
 /*
 // Usage example:
-var error = 7th Heaven_form_validate(jQuery(form_selector), {				// -------- Options ---------
+var error = Jacqueline_form_validate(jQuery(form_selector), {				// -------- Options ---------
 	error_message_show: true,									// Display or not error message
 	error_message_time: 5000,									// Time to display error message
 	error_message_class: 'sc_infobox sc_infobox_style_error',	// Class, appended to error message block
@@ -934,7 +934,7 @@ var error = 7th Heaven_form_validate(jQuery(form_selector), {				// -------- Opt
 });
 */
 
-function 7th Heaven_form_validate(form, opt) {
+function Jacqueline_form_validate(form, opt) {
 	"use strict";
 	var error_msg = '';
 	form.find(":input").each(function() {
@@ -999,7 +999,7 @@ function 7th Heaven_form_validate(form, opt) {
 ---------------------------------------------------------------- */
 
 // Animated scroll to selected id
-function 7th Heaven_document_animate_to(id) {
+function Jacqueline_document_animate_to(id) {
 	if (id.indexOf('#')==-1) id = '#' + id;
 	var obj = jQuery(id).eq(0);
 	if (obj.length == 0) return;
@@ -1010,7 +1010,7 @@ function 7th Heaven_document_animate_to(id) {
 }
 
 // Change browser address without reload page
-function 7th Heaven_document_set_location(curLoc){
+function Jacqueline_document_set_location(curLoc){
 	try {
 		history.pushState(null, null, curLoc);
 		return;
@@ -1019,15 +1019,15 @@ function 7th Heaven_document_set_location(curLoc){
 }
 
 // Add hidden elements init functions after tab, accordion, toggles activate
-function 7th Heaven_add_hidden_elements_handler(key, handler) {
-	7th Heaven_storage_set_array('init_hidden_elements', key, handler);
+function Jacqueline_add_hidden_elements_handler(key, handler) {
+	Jacqueline_storage_set_array('init_hidden_elements', key, handler);
 }
 
 // Init hidden elements after tab, accordion, toggles activate
-function 7th Heaven_init_hidden_elements(cont) {
-	if (7th Heaven_STORAGE['init_hidden_elements']) {
-		for (key in 7th Heaven_STORAGE['init_hidden_elements']) {
-			7th Heaven_STORAGE['init_hidden_elements'][key](cont);
+function Jacqueline_init_hidden_elements(cont) {
+	if (Jacqueline_STORAGE['init_hidden_elements']) {
+		for (key in Jacqueline_STORAGE['init_hidden_elements']) {
+			Jacqueline_STORAGE['init_hidden_elements'][key](cont);
 		}
 	}
 }
@@ -1037,15 +1037,15 @@ function 7th Heaven_init_hidden_elements(cont) {
 /* Browsers detection
 ---------------------------------------------------------------- */
 
-function 7th Heaven_browser_is_mobile() {
+function Jacqueline_browser_is_mobile() {
 	var check = false;
 	(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od|ad)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(navigator.userAgent||navigator.vendor||window.opera);
 	return check;
 }
-function 7th Heaven_browser_is_ios() {
+function Jacqueline_browser_is_ios() {
 	return navigator.userAgent.match(/iPad|iPhone|iPod/i) != null;
 }
-function 7th Heaven_is_retina() {
+function Jacqueline_is_retina() {
 	var mediaQuery = '(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)';
 	return (window.devicePixelRatio > 1) || (window.matchMedia && window.matchMedia(mediaQuery).matches);
 }
@@ -1054,7 +1054,7 @@ function 7th Heaven_is_retina() {
 /* File functions
 ---------------------------------------------------------------- */
 
-function 7th Heaven_get_file_name(path) {
+function Jacqueline_get_file_name(path) {
 	path = path.replace(/\\/g, '/');
 	var pos = path.lastIndexOf('/');
 	if (pos >= 0)
@@ -1062,7 +1062,7 @@ function 7th Heaven_get_file_name(path) {
 	return path;
 }
 
-function 7th Heaven_get_file_ext(path) {
+function Jacqueline_get_file_ext(path) {
 	var pos = path.lastIndexOf('.');
 	path = pos >= 0 ? path.substr(pos+1) : '';
 	return path;
@@ -1074,7 +1074,7 @@ function 7th Heaven_get_file_ext(path) {
 ---------------------------------------------------------------- */
 
 // Return true, if all images in the specified container are loaded
-function 7th Heaven_check_images_complete(cont) {
+function Jacqueline_check_images_complete(cont) {
 	var complete = true;
 	cont.find('img').each(function() {
 		if (!complete) return;

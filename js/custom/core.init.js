@@ -1,53 +1,53 @@
 /* global jQuery:false */
-/* global 7th Heaven_STORAGE:false */
+/* global Jacqueline_STORAGE:false */
 
 jQuery(document).ready(function() {
 	"use strict";
-	7th Heaven_STORAGE['theme_init_counter'] = 0;
-	7th Heaven_init_actions();
+	Jacqueline_STORAGE['theme_init_counter'] = 0;
+	Jacqueline_init_actions();
 });
 
 jQuery(window).on('beforeunload', function() {
 	"use strict";
 	// Show preloader
-//	jQuery('body.preloader>.outer_wrap,body.preloader>.body_wrap,body.preloader>.7th Heaven_profiler').css({opacity:0});	//.animate({opacity:0}, 'fast');
+//	jQuery('body.preloader>.outer_wrap,body.preloader>.body_wrap,body.preloader>.Jacqueline_profiler').css({opacity:0});	//.animate({opacity:0}, 'fast');
 //	jQuery('#page_preloader').show();	//css({display: 'block', opacity: 0}).animate({opacity:1}, 300);
 	jQuery('#page_preloader').css({display: 'block', opacity: 0}).animate({opacity:1}, 300);
 });
 
 
 // Theme init actions
-function 7th Heaven_init_actions() {
+function Jacqueline_init_actions() {
 	"use strict";
 
-	if (7th Heaven_STORAGE['sc_edit_mode'] && jQuery('.sc_empty-placeholder').length==0 && 7th Heaven_STORAGE['theme_init_counter']++ < 30) {
-		setTimeout(7th Heaven_init_actions, 200);
+	if (Jacqueline_STORAGE['sc_edit_mode'] && jQuery('.sc_empty-placeholder').length==0 && Jacqueline_STORAGE['theme_init_counter']++ < 30) {
+		setTimeout(Jacqueline_init_actions, 200);
 		return;
 	}
 	
 	// Hide preloader
-//	jQuery('body.preloader>.outer_wrap,body.preloader>.body_wrap,body.preloader>.7th Heaven_profiler').animate({opacity:1}, 'slow');	//.css({opacity:1});
+//	jQuery('body.preloader>.outer_wrap,body.preloader>.body_wrap,body.preloader>.Jacqueline_profiler').animate({opacity:1}, 'slow');	//.css({opacity:1});
 	jQuery('#page_preloader').animate({opacity:0}, 500, function() { jQuery(this).css({display: 'none'}); });
 
 	// Check for Retina display
-	if (7th Heaven_is_retina()) {
-		7th Heaven_set_cookie('7th Heaven_retina', 1, 365);
+	if (Jacqueline_is_retina()) {
+		Jacqueline_set_cookie('Jacqueline_retina', 1, 365);
 	}
 
-	7th Heaven_ready_actions();
+	Jacqueline_ready_actions();
 
 	// Add resize handlers after VC row stretch handlers on('resize.vcRowBehaviour', ...)
 	setTimeout(function() {
-		jQuery(window).on('resize.7th Heaven', function() {
-			7th Heaven_resize_actions();
-			7th Heaven_scroll_actions()
-		}).trigger('resize.7th Heaven');
+		jQuery(window).on('resize.Jacqueline', function() {
+			Jacqueline_resize_actions();
+			Jacqueline_scroll_actions()
+		}).trigger('resize.Jacqueline');
 	}, 10);
 
 	// Scroll handlers
-	jQuery(window).on('scroll.7th Heaven', function() {
+	jQuery(window).on('scroll.Jacqueline', function() {
 		"use strict";
-		7th Heaven_scroll_actions();
+		Jacqueline_scroll_actions();
 	});
 }
 
@@ -55,16 +55,16 @@ function 7th Heaven_init_actions() {
 
 // Theme first load actions
 //==============================================
-function 7th Heaven_ready_actions() {
+function Jacqueline_ready_actions() {
 	"use strict";
 
 	// Call skin specific action (if exists)
     //----------------------------------------------
-	if (window.7th Heaven_skin_ready_actions) 7th Heaven_skin_ready_actions();
+	if (window.Jacqueline_skin_ready_actions) Jacqueline_skin_ready_actions();
 
 	// Call theme specific action (if exists)
     //----------------------------------------------
-	if (window.7th Heaven_theme_ready_actions) 7th Heaven_theme_ready_actions();
+	if (window.Jacqueline_theme_ready_actions) Jacqueline_theme_ready_actions();
 
 
 	// Widgets decoration
@@ -95,9 +95,9 @@ function 7th Heaven_ready_actions() {
 		var m = jQuery(this).data('month');
 		var y = jQuery(this).data('year');
 		var pt = jQuery(this).data('type');
-		jQuery.post(7th Heaven_STORAGE['ajax_url'], {
+		jQuery.post(Jacqueline_STORAGE['ajax_url'], {
 			action: 'calendar_change_month',
-			nonce: 7th Heaven_STORAGE['ajax_nonce'],
+			nonce: Jacqueline_STORAGE['ajax_nonce'],
 			month: m,
 			year: y,
 			post_type: pt
@@ -106,7 +106,7 @@ function 7th Heaven_ready_actions() {
 			try {
 				rez = JSON.parse(response);
 			} catch (e) {
-				rez = { error: 7th Heaven_STORAGE['ajax_error'] };
+				rez = { error: Jacqueline_STORAGE['ajax_error'] };
 				console.log(response);
 			}
 			if (rez.error === '') {
@@ -147,14 +147,14 @@ function 7th Heaven_ready_actions() {
 	// Menu
     //----------------------------------------------
 
-	7th Heaven_STORAGE['menu_mobile'] = 1024;
+	Jacqueline_STORAGE['menu_mobile'] = 1024;
 	// Prepare menus
-	if (7th Heaven_STORAGE['menu_cache']) 7th Heaven_prepare_menus();
+	if (Jacqueline_STORAGE['menu_cache']) Jacqueline_prepare_menus();
 
 	// Clone side menu for responsive
 	if (jQuery('ul#menu_side').length > 0) {
 		jQuery('ul#menu_side').clone().removeAttr('id').removeClass('menu_side_nav').addClass('menu_side_responsive').insertAfter('ul#menu_side');
-		7th Heaven_show_current_menu_item(jQuery('.menu_side_responsive'), jQuery('.sidebar_outer_menu_responsive_button'));
+		Jacqueline_show_current_menu_item(jQuery('.menu_side_responsive'), jQuery('.sidebar_outer_menu_responsive_button'));
 	}
 	if (jQuery('.header_mobile').length > 0) {
 		jQuery('.header_mobile .menu_main_nav_area ul.menu_main_nav').removeAttr('id');
@@ -163,7 +163,7 @@ function 7th Heaven_ready_actions() {
 			jQuery('.header_mobile .mask').toggleClass('show');
 			jQuery('html').toggleClass('menu_mobile_open');
 			// Fix for Safari
-			if (7th Heaven_browser_is_ios() && jQuery('body').hasClass('menu_mobile')) {
+			if (Jacqueline_browser_is_ios() && jQuery('body').hasClass('menu_mobile')) {
 				jQuery('body').toggleClass('ios_fixed');
 			}
 		});
@@ -172,7 +172,7 @@ function 7th Heaven_ready_actions() {
 			jQuery('.header_mobile .mask').removeClass('show');
 			jQuery('html').removeClass('menu_mobile_open');
 			// Fix for Safari
-			if (7th Heaven_browser_is_ios() && jQuery('body').hasClass('menu_mobile')) {
+			if (Jacqueline_browser_is_ios() && jQuery('body').hasClass('menu_mobile')) {
 				jQuery('body').toggleClass('ios_fixed');
 			}
 		});
@@ -225,18 +225,18 @@ function 7th Heaven_ready_actions() {
 	});
 	
 	// Init superfish menus
-	7th Heaven_init_sfmenu('header .menu_main_nav_area ul.menu_main_nav, ul.menu_user_nav, ul#menu_side, body:not(.woocommerce) .widget_area:not(.footer_wrap) .widget_product_categories ul.product-categories');
-	7th Heaven_STORAGE['menu_slider'] = true;
+	Jacqueline_init_sfmenu('header .menu_main_nav_area ul.menu_main_nav, ul.menu_user_nav, ul#menu_side, body:not(.woocommerce) .widget_area:not(.footer_wrap) .widget_product_categories ul.product-categories');
+	Jacqueline_STORAGE['menu_slider'] = true;
 	// Slide effect for main menu
-	if (7th Heaven_STORAGE['menu_slider']) {
+	if (Jacqueline_STORAGE['menu_slider']) {
 		jQuery('ul.menu_main_nav').spasticNav({
-			color: 7th Heaven_STORAGE['accent2_color']
+			color: Jacqueline_STORAGE['accent2_color']
 		});
 	}
 
 	// Show table of contents for the current page
-	if (7th Heaven_STORAGE['toc_menu'] != 'hide' && 7th Heaven_STORAGE['toc_menu'] != 'no') {
-		7th Heaven_build_page_toc();
+	if (Jacqueline_STORAGE['toc_menu'] != 'hide' && Jacqueline_STORAGE['toc_menu'] != 'no') {
+		Jacqueline_build_page_toc();
 	}
 
 	// One page mode for menu links (scroll to anchor)
@@ -253,8 +253,8 @@ function 7th Heaven_ready_actions() {
 			var now = pos==0;
 			if (!now) now = loc == href.substring(0, pos);
 			if (now) {
-				7th Heaven_document_animate_to(href.substr(pos));
-				7th Heaven_document_set_location(pos==0 ? loc + href : href);
+				Jacqueline_document_animate_to(href.substr(pos));
+				Jacqueline_document_set_location(pos==0 ? loc + href : href);
 				e.preventDefault();
 				return false;
 			}
@@ -263,8 +263,8 @@ function 7th Heaven_ready_actions() {
 	
 	
 	// Store height of the top and side panels
-	7th Heaven_STORAGE['top_panel_height'] = 0;	//Math.max(0, jQuery('.top_panel_wrap').height());
-	7th Heaven_STORAGE['side_panel_height'] = 0;
+	Jacqueline_STORAGE['top_panel_height'] = 0;	//Math.max(0, jQuery('.top_panel_wrap').height());
+	Jacqueline_STORAGE['side_panel_height'] = 0;
 
 
 	// Pagination
@@ -274,7 +274,7 @@ function 7th Heaven_ready_actions() {
 	jQuery('.pager_cur').on('click', function(e) {
 		"use strict";
 		jQuery('.pager_slider').slideDown(300, function() {
-			7th Heaven_sc_init(jQuery('.pager_slider').eq(0));
+			Jacqueline_sc_init(jQuery('.pager_slider').eq(0));
 		});
 		e.preventDefault();
 		return false;
@@ -284,44 +284,44 @@ function 7th Heaven_ready_actions() {
 	// View More button
 	jQuery('#viewmore_link').on('click', function(e) {
 		"use strict";
-		if (!7th Heaven_STORAGE['viewmore_busy'] && !jQuery(this).hasClass('viewmore_empty')) {
+		if (!Jacqueline_STORAGE['viewmore_busy'] && !jQuery(this).hasClass('viewmore_empty')) {
 			jQuery(this).parent().addClass('loading');
-			7th Heaven_STORAGE['viewmore_busy'] = true;
-			jQuery.post(7th Heaven_STORAGE['ajax_url'], {
+			Jacqueline_STORAGE['viewmore_busy'] = true;
+			jQuery.post(Jacqueline_STORAGE['ajax_url'], {
 				action: 'view_more_posts',
-				nonce: 7th Heaven_STORAGE['ajax_nonce'],
-				page: 7th Heaven_STORAGE['viewmore_page']+1,
-				data: 7th Heaven_STORAGE['viewmore_data'],
-				vars: 7th Heaven_STORAGE['viewmore_vars']
+				nonce: Jacqueline_STORAGE['ajax_nonce'],
+				page: Jacqueline_STORAGE['viewmore_page']+1,
+				data: Jacqueline_STORAGE['viewmore_data'],
+				vars: Jacqueline_STORAGE['viewmore_vars']
 			}).done(function(response) {
 				"use strict";
 				var rez = {};
 				try {
 					rez = JSON.parse(response);
 				} catch (e) {
-					rez = { error: 7th Heaven_STORAGE['ajax_error'] };
+					rez = { error: Jacqueline_STORAGE['ajax_error'] };
 					console.log(response);
 				}
 				jQuery('#viewmore_link').parent().removeClass('loading');
-				7th Heaven_STORAGE['viewmore_busy'] = false;
+				Jacqueline_STORAGE['viewmore_busy'] = false;
 				if (rez.error === '') {
 					var posts_container = jQuery('.content').eq(0);
 					if (posts_container.find('.isotope_wrap').length > 0) posts_container = posts_container.find('.isotope_wrap').eq(0);
 					if (posts_container.hasClass('isotope_wrap')) {
 						posts_container.data('last-width', 0).append(rez.data);
-						7th Heaven_STORAGE['isotope_init_counter'] = 0;
-						7th Heaven_init_appended_isotope(posts_container, rez.filters);
+						Jacqueline_STORAGE['isotope_init_counter'] = 0;
+						Jacqueline_init_appended_isotope(posts_container, rez.filters);
 					} else
 						jQuery('#viewmore').before(rez.data);
 
-					7th Heaven_STORAGE['viewmore_page']++;
+					Jacqueline_STORAGE['viewmore_page']++;
 					if (rez.no_more_data==1) {
 						jQuery('#viewmore_link').addClass('viewmore_empty').parent().hide();
 					}
 
-					7th Heaven_init_post_formats();
-					7th Heaven_sc_init(posts_container);
-					7th Heaven_scroll_actions();
+					Jacqueline_init_post_formats();
+					Jacqueline_sc_init(posts_container);
+					Jacqueline_scroll_actions();
 				}
 			});
 		}
@@ -337,7 +337,7 @@ function 7th Heaven_ready_actions() {
 	jQuery('.woocommerce,.woocommerce-page').on('click', '.mode_buttons a', function(e) {
 		"use strict";
 		var mode = jQuery(this).hasClass('woocommerce_thumbs') ? 'thumbs' : 'list';
-		jQuery.cookie('7th Heaven_shop_mode', mode, {expires: 365, path: '/'});
+		jQuery.cookie('Jacqueline_shop_mode', mode, {expires: 365, path: '/'});
 		jQuery(this).siblings('input').val(mode).parents('form').get(0).submit();
 		e.preventDefault();
 		return false;
@@ -390,15 +390,15 @@ function 7th Heaven_ready_actions() {
 	jQuery('.single-product .woocommerce-tabs')
 		.addClass('trx-stretch-width inverse_colors')
 		.after('<div class="trx-stretch-width-original"></div>');
-	7th Heaven_stretch_width();
+	Jacqueline_stretch_width();
 
 	// Popup login and register windows
     //----------------------------------------------
 	jQuery('.popup_link').addClass('inited').on('click', function(e){
 		var popup = jQuery(jQuery(this).attr('href'));
 		if (popup.length === 1) {
-			7th Heaven_hide_popup(jQuery(popup.hasClass('popup_login') ? '.popup_registration' : '.popup_login' ));
-			7th Heaven_toggle_popup(popup);
+			Jacqueline_hide_popup(jQuery(popup.hasClass('popup_login') ? '.popup_registration' : '.popup_login' ));
+			Jacqueline_toggle_popup(popup);
 		}
 		e.preventDefault();
 		return false;
@@ -406,7 +406,7 @@ function 7th Heaven_ready_actions() {
 	jQuery('.popup_wrap').on('click', '.popup_close', function(e){
 		var popup = jQuery(this).parent();
 		if (popup.length === 1) {
-			7th Heaven_hide_popup(popup);
+			Jacqueline_hide_popup(popup);
 		}
 		e.preventDefault();
 		return false;
@@ -419,7 +419,7 @@ function 7th Heaven_ready_actions() {
 	// Login form
 	jQuery('.popup_form.login_form').submit(function(e){
 		"use strict";
-		var rez = 7th Heaven_login_validate(jQuery(this));
+		var rez = Jacqueline_login_validate(jQuery(this));
 		if (!rez)
 			e.preventDefault();
 		return rez;
@@ -428,7 +428,7 @@ function 7th Heaven_ready_actions() {
 	// Registration form
 	jQuery('.popup_form.registration_form').submit(function(e){
 		"use strict";
-		var rez = 7th Heaven_registration_validate(jQuery(this));
+		var rez = Jacqueline_registration_validate(jQuery(this));
 		if (!rez)
 			e.preventDefault();
 		return rez;
@@ -437,7 +437,7 @@ function 7th Heaven_ready_actions() {
 	// Comment form
 	jQuery("form#commentform").submit(function(e) {
 		"use strict";
-		var rez = 7th Heaven_comments_validate(jQuery(this));
+		var rez = Jacqueline_comments_validate(jQuery(this));
 		if (!rez)
 			e.preventDefault();
 		return rez;
@@ -453,7 +453,7 @@ function 7th Heaven_ready_actions() {
 		"use strict";
 		var title = window.document.title.split('|')[0];
 		var url = window.location.href;
-		var list = jQuery.cookie('7th Heaven_bookmarks');
+		var list = jQuery.cookie('Jacqueline_bookmarks');
 		var exists = false;
 		if (list) {
 			try {
@@ -470,18 +470,18 @@ function 7th Heaven_ready_actions() {
 		} else
 			list = new Array();
 		if (!exists) {
-			var message_popup = 7th Heaven_message_dialog('<label for="bookmark_title">'+7th Heaven_STORAGE['strings']['bookmark_title']+'</label><br><input type="text" id="bookmark_title" name="bookmark_title" value="'+title+'">', 7th Heaven_STORAGE['strings']['bookmark_add'], null,
+			var message_popup = Jacqueline_message_dialog('<label for="bookmark_title">'+Jacqueline_STORAGE['strings']['bookmark_title']+'</label><br><input type="text" id="bookmark_title" name="bookmark_title" value="'+title+'">', Jacqueline_STORAGE['strings']['bookmark_add'], null,
 				function(btn, popup) {
 					"use strict";
 					if (btn != 1) return;
 					title = message_popup.find('#bookmark_title').val();
 					list.push({title: title, url: url});
-					jQuery('.bookmarks_list').append('<li><a href="'+url+'" class="bookmarks_item">'+title+'<span class="bookmarks_delete icon-cancel" title="'+7th Heaven_STORAGE['strings']['bookmark_del']+'"></span></a></li>');
-					jQuery.cookie('7th Heaven_bookmarks', JSON.stringify(list), {expires: 365, path: '/'});
-					setTimeout(function () {7th Heaven_message_success(7th Heaven_STORAGE['strings']['bookmark_added'], 7th Heaven_STORAGE['strings']['bookmark_add']);}, 7th Heaven_STORAGE['message_timeout']/4);
+					jQuery('.bookmarks_list').append('<li><a href="'+url+'" class="bookmarks_item">'+title+'<span class="bookmarks_delete icon-cancel" title="'+Jacqueline_STORAGE['strings']['bookmark_del']+'"></span></a></li>');
+					jQuery.cookie('Jacqueline_bookmarks', JSON.stringify(list), {expires: 365, path: '/'});
+					setTimeout(function () {Jacqueline_message_success(Jacqueline_STORAGE['strings']['bookmark_added'], Jacqueline_STORAGE['strings']['bookmark_add']);}, Jacqueline_STORAGE['message_timeout']/4);
 				});
 		} else
-			7th Heaven_message_warning(7th Heaven_STORAGE['strings']['bookmark_exists'], 7th Heaven_STORAGE['strings']['bookmark_add']);
+			Jacqueline_message_warning(Jacqueline_STORAGE['strings']['bookmark_exists'], Jacqueline_STORAGE['strings']['bookmark_add']);
 		e.preventDefault();
 		return false;
 	});
@@ -490,14 +490,14 @@ function 7th Heaven_ready_actions() {
 	jQuery('.bookmarks_list').on('click', '.bookmarks_delete', function(e) {
 		"use strict";
 		var idx = jQuery(this).parent().index();
-		var list = jQuery.cookie('7th Heaven_bookmarks');
+		var list = jQuery.cookie('Jacqueline_bookmarks');
 		if (list) {
 			try {
 				list = JSON.parse(list);
 			} catch (e) {}
 			if (list.length) {
 				list.splice(idx, 1);
-				jQuery.cookie('7th Heaven_bookmarks', JSON.stringify(list), {expires: 365, path: '/'});
+				jQuery.cookie('Jacqueline_bookmarks', JSON.stringify(list), {expires: 365, path: '/'});
 			}
 		}
 		jQuery(this).parent().remove();
@@ -521,16 +521,16 @@ function 7th Heaven_ready_actions() {
 	});
 
     // Show system message
-	7th Heaven_show_system_message();
+	Jacqueline_show_system_message();
 
 	// Init post format specific scripts
-	7th Heaven_init_post_formats();
+	Jacqueline_init_post_formats();
 
 	// Call sc init action (if exists)
-	if (window.7th Heaven_sc_init_actions) 7th Heaven_sc_init_actions();
+	if (window.Jacqueline_sc_init_actions) Jacqueline_sc_init_actions();
 
 	// Init hidden elements (if exists)
-	if (window.7th Heaven_init_hidden_elements) 7th Heaven_init_hidden_elements(jQuery('body').eq(0));
+	if (window.Jacqueline_init_hidden_elements) Jacqueline_init_hidden_elements(jQuery('body').eq(0));
 	
 	//Make columns equal height
 	jQuery('.columns_wrap.sc_columns.equal_height').each(function(){
@@ -574,47 +574,47 @@ function 7th Heaven_ready_actions() {
 //==============================================
 
 // Do actions when page scrolled
-function 7th Heaven_scroll_actions() {
+function Jacqueline_scroll_actions() {
 	"use strict";
 	
 	// Call skin specific action (if exists)
     //----------------------------------------------
-	if (window.7th Heaven_skin_scroll_actions) 7th Heaven_skin_scroll_actions();
+	if (window.Jacqueline_skin_scroll_actions) Jacqueline_skin_scroll_actions();
 
 	// Call theme specific action (if exists)
     //----------------------------------------------
-	if (window.7th Heaven_theme_scroll_actions) 7th Heaven_theme_scroll_actions();
+	if (window.Jacqueline_theme_scroll_actions) Jacqueline_theme_scroll_actions();
 
 	var scroll_offset = jQuery(window).scrollTop();
 	var scroll_to_top_button = jQuery('.scroll_to_top');
 	var adminbar_height = Math.max(0, jQuery('#wpadminbar').height());
 
-	if (7th Heaven_STORAGE['top_panel_height'] < 1) {
-		7th Heaven_STORAGE['top_panel_height'] = Math.max(0, jQuery('.top_panel_wrap').height());
+	if (Jacqueline_STORAGE['top_panel_height'] < 1) {
+		Jacqueline_STORAGE['top_panel_height'] = Math.max(0, jQuery('.top_panel_wrap').height());
 	}
 	
 	// Scroll to top button show/hide
-	if (scroll_offset > 7th Heaven_STORAGE['top_panel_height'])
+	if (scroll_offset > Jacqueline_STORAGE['top_panel_height'])
 		scroll_to_top_button.addClass('show');
 	else
 		scroll_to_top_button.removeClass('show');
 	
 	// Fix/unfix top panel
-	if (!jQuery('body').hasClass('menu_mobile') && 7th Heaven_STORAGE['menu_fixed']) {
+	if (!jQuery('body').hasClass('menu_mobile') && Jacqueline_STORAGE['menu_fixed']) {
 		var slider_height = 0;
 		if (jQuery('.top_panel_below .slider_wrap').length > 0) {
 			slider_height = jQuery('.top_panel_below .slider_wrap').height();
 			if (slider_height < 10) {
-				slider_height = jQuery('.slider_wrap').hasClass('.slider_fullscreen') ? jQuery(window).height() : 7th Heaven_STORAGE['slider_height'];
+				slider_height = jQuery('.slider_wrap').hasClass('.slider_fullscreen') ? jQuery(window).height() : Jacqueline_STORAGE['slider_height'];
 			}
 		}
-		if (scroll_offset <= slider_height + 7th Heaven_STORAGE['top_panel_height']) {
+		if (scroll_offset <= slider_height + Jacqueline_STORAGE['top_panel_height']) {
 			if (jQuery('body').hasClass('top_panel_fixed')) {
 				jQuery('body').removeClass('top_panel_fixed');
 			}
-		} else if (scroll_offset > slider_height + 7th Heaven_STORAGE['top_panel_height']) {
+		} else if (scroll_offset > slider_height + Jacqueline_STORAGE['top_panel_height']) {
 			if (!jQuery('body').hasClass('top_panel_fixed') && jQuery(document).height() > jQuery(window).height()*1.5) {
-				jQuery('.top_panel_fixed_wrap').height(7th Heaven_STORAGE['top_panel_height']);
+				jQuery('.top_panel_fixed_wrap').height(Jacqueline_STORAGE['top_panel_height']);
 				jQuery('.top_panel_wrap').css('marginTop', '-150px').animate({'marginTop': 0}, 500);
 				jQuery('body').addClass('top_panel_fixed');
 			}
@@ -623,14 +623,14 @@ function 7th Heaven_scroll_actions() {
 	
 	// Fix/unfix side panel
 	if (jQuery('.sidebar_outer').length > 0) {
-		if (7th Heaven_STORAGE['side_panel_height'] == 0)	
-			7th Heaven_STORAGE['side_panel_height'] = jQuery('.sidebar_outer_logo_wrap').outerHeight() + jQuery('.sidebar_outer_menu').outerHeight() + jQuery('.sidebar_outer_widgets').outerHeight();
-		if (scroll_offset + jQuery(window).height() > 7th Heaven_STORAGE['side_panel_height'] + 100) {
+		if (Jacqueline_STORAGE['side_panel_height'] == 0)	
+			Jacqueline_STORAGE['side_panel_height'] = jQuery('.sidebar_outer_logo_wrap').outerHeight() + jQuery('.sidebar_outer_menu').outerHeight() + jQuery('.sidebar_outer_widgets').outerHeight();
+		if (scroll_offset + jQuery(window).height() > Jacqueline_STORAGE['side_panel_height'] + 100) {
 			if (jQuery('.sidebar_outer').css('position')!=='fixed') {
 				jQuery('.sidebar_outer').css({
-					//'top': (scroll_offset + jQuery(window).height() - 7th Heaven_STORAGE['side_panel_height'] - 100) + 'px'
+					//'top': (scroll_offset + jQuery(window).height() - Jacqueline_STORAGE['side_panel_height'] - 100) + 'px'
 					'position': 'fixed',
-					'top': Math.min(0, jQuery(window).height() - 7th Heaven_STORAGE['side_panel_height'] - 100) + 'px',
+					'top': Math.min(0, jQuery(window).height() - Jacqueline_STORAGE['side_panel_height'] - 100) + 'px',
 				});
 			}
 		} else {
@@ -658,27 +658,27 @@ function 7th Heaven_scroll_actions() {
 		var off = jQuery(id).offset().top;
 		var id_next  = jQuery(this).next().find('a').attr('href');
 		var off_next = id_next ? jQuery(id_next).offset().top : 1000000;
-		if (off < scroll_offset + jQuery(window).height()*0.8 && scroll_offset + 7th Heaven_STORAGE['top_panel_height'] < off_next)
+		if (off < scroll_offset + jQuery(window).height()*0.8 && scroll_offset + Jacqueline_STORAGE['top_panel_height'] < off_next)
 			jQuery(this).addClass('current');
 		else
 			jQuery(this).removeClass('current');
 	});
 	
 	// Infinite pagination
-	7th Heaven_infinite_scroll()
+	Jacqueline_infinite_scroll()
 	
 	// Parallax scroll
-	7th Heaven_parallax_scroll();
+	Jacqueline_parallax_scroll();
 
 	// Call sc scroll actions (if exists)
-	if (window.7th Heaven_sc_scroll_actions) 7th Heaven_sc_scroll_actions();
+	if (window.Jacqueline_sc_scroll_actions) Jacqueline_sc_scroll_actions();
 }
 
 
 // Infinite Scroll
-function 7th Heaven_infinite_scroll() {
+function Jacqueline_infinite_scroll() {
 	"use strict";
-	if (7th Heaven_STORAGE['viewmore_busy']) return;
+	if (Jacqueline_STORAGE['viewmore_busy']) return;
 	var infinite = jQuery('#viewmore.pagination_infinite');
 	if (infinite.length > 0) {
 		var viewmore = infinite.find('#viewmore_link:not(.viewmore_empty)');
@@ -691,7 +691,7 @@ function 7th Heaven_infinite_scroll() {
 }
 
 // Parallax scroll
-function 7th Heaven_parallax_scroll(){
+function Jacqueline_parallax_scroll(){
 	jQuery('.sc_parallax').each(function(){
 		var windowHeight = jQuery(window).height();
 		var scrollTops = jQuery(window).scrollTop();
@@ -715,33 +715,33 @@ function 7th Heaven_parallax_scroll(){
 //==============================================
 
 // Do actions when page scrolled
-function 7th Heaven_resize_actions() {
+function Jacqueline_resize_actions() {
 	"use strict";
 
 	// Call skin specific action (if exists)
     //----------------------------------------------
-	if (window.7th Heaven_skin_resize_actions) 7th Heaven_skin_resize_actions();
+	if (window.Jacqueline_skin_resize_actions) Jacqueline_skin_resize_actions();
 
 	// Call theme specific action (if exists)
     //----------------------------------------------
-	if (window.7th Heaven_theme_resize_actions) 7th Heaven_theme_resize_actions();
+	if (window.Jacqueline_theme_resize_actions) Jacqueline_theme_resize_actions();
 
 	// Reset stored value
-	7th Heaven_STORAGE['top_panel_height'] = 0;
+	Jacqueline_STORAGE['top_panel_height'] = 0;
 
-	7th Heaven_responsive_menu();
-	7th Heaven_video_dimensions();
-	7th Heaven_resize_video_background();
-	7th Heaven_resize_fullscreen_slider();
-	7th Heaven_resize_alter_portfolio();
-	7th Heaven_stretch_width();
+	Jacqueline_responsive_menu();
+	Jacqueline_video_dimensions();
+	Jacqueline_resize_video_background();
+	Jacqueline_resize_fullscreen_slider();
+	Jacqueline_resize_alter_portfolio();
+	Jacqueline_stretch_width();
 
 	// Call sc resize actions (if exists)
-	if (window.7th Heaven_sc_resize_actions) 7th Heaven_sc_resize_actions();
+	if (window.Jacqueline_sc_resize_actions) Jacqueline_sc_resize_actions();
 }
 
 // Stretch area to full window width
-function 7th Heaven_stretch_width() {
+function Jacqueline_stretch_width() {
 	jQuery('.trx-stretch-width').each(function() {
 		var $el = jQuery(this);
 		var $el_full = $el.next('.trx-stretch-width-original');
@@ -770,8 +770,8 @@ function 7th Heaven_stretch_width() {
 }
 
 // Check window size and do responsive menu
-function 7th Heaven_responsive_menu() {
-	if (7th Heaven_is_responsive_need(7th Heaven_STORAGE['menu_mobile'])) {
+function Jacqueline_responsive_menu() {
+	if (Jacqueline_is_responsive_need(Jacqueline_STORAGE['menu_mobile'])) {
 		if (!jQuery('body').hasClass('menu_mobile')) {
 			jQuery('body').removeClass('top_panel_fixed').addClass('menu_mobile');
 			jQuery('header.top_panel_wrap ').hide();
@@ -825,7 +825,7 @@ function 7th Heaven_responsive_menu() {
 			if (!cat_menu.hasClass('inited')) {
 				cat_menu.removeClass('plain').addClass('inited');
 				cat_menu.find('ul.no_animated').removeClass('no_animated').addClass('animated');
-				7th Heaven_init_sfmenu('body:not(.woocommerce) .widget_area:not(.footer_wrap) .widget_product_categories ul.product-categories');
+				Jacqueline_init_sfmenu('body:not(.woocommerce) .widget_area:not(.footer_wrap) .widget_product_categories ul.product-categories');
 			}
 		}
 	}
@@ -833,7 +833,7 @@ function 7th Heaven_responsive_menu() {
 
 
 // Check if responsive menu need
-function 7th Heaven_is_responsive_need(max_width) {
+function Jacqueline_is_responsive_need(max_width) {
 	"use strict";
 	var rez = false;
 	if (max_width > 0) {
@@ -848,7 +848,7 @@ function 7th Heaven_is_responsive_need(max_width) {
 
 
 // Fit video frames to document width
-function 7th Heaven_video_dimensions() {
+function Jacqueline_video_dimensions() {
 	jQuery('.sc_video_frame').each(function() {
 		"use strict";
 		var frame  = jQuery(this).eq(0);
@@ -893,7 +893,7 @@ function 7th Heaven_video_dimensions() {
 			h_real = Math.round(percent ? w_real/ratio : w_real/w_attr*h_attr);
 		if (parseInt(video.attr('data-last-width'))==w_real) return;
 		if (mejs_cont.length > 0 && mejs) {
-			7th Heaven_set_mejs_player_dimensions(video, w_real, h_real);
+			Jacqueline_set_mejs_player_dimensions(video, w_real, h_real);
 		}
 		if (percent) {
 			video.height(h_real);
@@ -934,7 +934,7 @@ function 7th Heaven_video_dimensions() {
 		var t = Math.round((h1-h)/2);
 		if (parseInt(video.attr('data-last-width'))==w1) return;
 		if (mejs_cont.length > 0) {
-			7th Heaven_set_mejs_player_dimensions(video, w1, h1);
+			Jacqueline_set_mejs_player_dimensions(video, w1, h1);
 			mejs_cont.css({
 				//'left': -l+'px',
 				'top': -t+'px'
@@ -973,13 +973,13 @@ function 7th Heaven_video_dimensions() {
 }
 
 // Resize fullscreen video background
-function 7th Heaven_resize_video_background() {
+function Jacqueline_resize_video_background() {
 	"use strict";
 	var bg = jQuery('.video_bg');
 	if (bg.length < 1) 
 		return;
-	if (7th Heaven_STORAGE['media_elements_enabled'] && bg.find('.mejs-video').length == 0)  {
-		setTimeout(7th Heaven_resize_video_background, 100);
+	if (Jacqueline_STORAGE['media_elements_enabled'] && bg.find('.mejs-video').length == 0)  {
+		setTimeout(Jacqueline_resize_video_background, 100);
 		return;
 	}
 	var video = bg.find('video');
@@ -1000,7 +1000,7 @@ function 7th Heaven_resize_video_background() {
 	var l = Math.round((w1-w)/2);
 	var t = Math.round((h1-h)/2);
 	if (bg.find('.mejs-container').length > 0) {
-		7th Heaven_set_mejs_player_dimensions(bg.find('video'), w1, h1);
+		Jacqueline_set_mejs_player_dimensions(bg.find('video'), w1, h1);
 		bg.find('.mejs-container').css({'left': -l+'px', 'top': -t+'px'});
 	} else
 		bg.find('video').css({'left': -l+'px', 'top': -t+'px'});
@@ -1008,7 +1008,7 @@ function 7th Heaven_resize_video_background() {
 }
 
 // Set Media Elements player dimensions
-function 7th Heaven_set_mejs_player_dimensions(video, w, h) {
+function Jacqueline_set_mejs_player_dimensions(video, w, h) {
 	"use strict";
 	if (mejs) {
 		for (var pl in mejs.players) {
@@ -1026,7 +1026,7 @@ function 7th Heaven_set_mejs_player_dimensions(video, w, h) {
 }
 
 // Resize Fullscreen Slider
-function 7th Heaven_resize_fullscreen_slider() {
+function Jacqueline_resize_fullscreen_slider() {
 	"use strict";
 	var slider_wrap = jQuery('.slider_wrap.slider_fullscreen');
 	if (slider_wrap.length < 1) 
@@ -1039,7 +1039,7 @@ function 7th Heaven_resize_fullscreen_slider() {
 }
 
 // Resize Alter portfolio elements
-function 7th Heaven_resize_alter_portfolio() {
+function Jacqueline_resize_alter_portfolio() {
 	"use strict";
 	var wrap = jQuery('.isotope_wrap.inited');
 	if (wrap.length==0) return;
@@ -1079,9 +1079,9 @@ function 7th Heaven_resize_alter_portfolio() {
 //==============================================
 
 // Init Superfish menu
-function 7th Heaven_init_sfmenu(selector) {
+function Jacqueline_init_sfmenu(selector) {
 	jQuery(selector).show().each(function() {
-		if (7th Heaven_is_responsive_need() && (jQuery(this).attr('id')=='menu_main' || jQuery(this).attr('id')=='menu_side')) return;
+		if (Jacqueline_is_responsive_need() && (jQuery(this).attr('id')=='menu_main' || jQuery(this).attr('id')=='menu_side')) return;
 		jQuery(this).addClass('inited').superfish({
 			delay: 500,
 			animation: {
@@ -1090,8 +1090,8 @@ function 7th Heaven_init_sfmenu(selector) {
 			animationOut: {
 				opacity: 'hide'
 			},
-			speed: 		7th Heaven_STORAGE['css_animation'] ? 500 : (7th Heaven_STORAGE['menu_slider'] ? 300 : 200),
-			speedOut:	7th Heaven_STORAGE['css_animation'] ? 500 : (7th Heaven_STORAGE['menu_slider'] ? 300 : 200),
+			speed: 		Jacqueline_STORAGE['css_animation'] ? 500 : (Jacqueline_STORAGE['menu_slider'] ? 300 : 200),
+			speedOut:	Jacqueline_STORAGE['css_animation'] ? 500 : (Jacqueline_STORAGE['menu_slider'] ? 300 : 200),
 			autoArrows: false,
 			dropShadows: false,
 			onBeforeShow: function(ul) {
@@ -1105,15 +1105,15 @@ function 7th Heaven_init_sfmenu(selector) {
 					else
 						jQuery(this).removeClass('submenu_left');
 				}
-				if (7th Heaven_STORAGE['css_animation']) {
-					jQuery(this).removeClass('animated fast '+7th Heaven_STORAGE['menu_animation_out']);
-					jQuery(this).addClass('animated fast '+7th Heaven_STORAGE['menu_animation_in']);
+				if (Jacqueline_STORAGE['css_animation']) {
+					jQuery(this).removeClass('animated fast '+Jacqueline_STORAGE['menu_animation_out']);
+					jQuery(this).addClass('animated fast '+Jacqueline_STORAGE['menu_animation_in']);
 				}
 			},
 			onBeforeHide: function(ul) {
-				if (7th Heaven_STORAGE['css_animation']) {
-					jQuery(this).removeClass('animated fast '+7th Heaven_STORAGE['menu_animation_in']);
-					jQuery(this).addClass('animated fast '+7th Heaven_STORAGE['menu_animation_out']);
+				if (Jacqueline_STORAGE['css_animation']) {
+					jQuery(this).removeClass('animated fast '+Jacqueline_STORAGE['menu_animation_in']);
+					jQuery(this).addClass('animated fast '+Jacqueline_STORAGE['menu_animation_out']);
 				}
 			}
 		});
@@ -1122,7 +1122,7 @@ function 7th Heaven_init_sfmenu(selector) {
 
 
 // Build page TOC from the tag's id
-function 7th Heaven_build_page_toc() {
+function Jacqueline_build_page_toc() {
 	"use strict";
 	var toc = '', toc_count = 0;
 	jQuery('[id^="toc_"],.sc_anchor').each(function(idx) {
@@ -1141,17 +1141,17 @@ function 7th Heaven_build_page_toc() {
 			+'<a href="'+(url ? url : '#'+id)+'" class="toc_icon'+(title ? ' with_title' : '')+' '+icon+'">'+(title ? '<span class="toc_title">'+title+'</span>' : '')+'</a>'
 			+'</div>';
 	});
-	if (toc_count > (7th Heaven_STORAGE['toc_menu_home'] ? 1 : 0) + (7th Heaven_STORAGE['toc_menu_top'] ? 1 : 0)) {
+	if (toc_count > (Jacqueline_STORAGE['toc_menu_home'] ? 1 : 0) + (Jacqueline_STORAGE['toc_menu_top'] ? 1 : 0)) {
 		if (jQuery('#toc').length > 0)
 			jQuery('#toc .toc_inner').html(toc);
 		else
-			jQuery('body').append('<div id="toc" class="toc_'+7th Heaven_STORAGE['toc_menu']+'"><div class="toc_inner">'+toc+'</div></div>');
+			jQuery('body').append('<div id="toc" class="toc_'+Jacqueline_STORAGE['toc_menu']+'"><div class="toc_inner">'+toc+'</div></div>');
 	}
 }
 
 
 // Show current page title on the responsive menu button
-function 7th Heaven_show_current_menu_item(menu, button) {
+function Jacqueline_show_current_menu_item(menu, button) {
 	"use strict";
 	menu.find('a').each(function () {
 		var menu_link = jQuery(this);
@@ -1165,7 +1165,7 @@ function 7th Heaven_show_current_menu_item(menu, button) {
 
 
 // Prepare menus (if menu cache is used)
-function 7th Heaven_prepare_menus() {
+function Jacqueline_prepare_menus() {
 	"use strict";
 	var menus = [
 		jQuery('ul.menu_main_nav'),
@@ -1197,7 +1197,7 @@ function 7th Heaven_prepare_menus() {
 //=====================================================
 
 // First init isotope containers
-function 7th Heaven_init_isotope() {
+function Jacqueline_init_isotope() {
 	"use strict";
 
 	var all_images_complete = true;
@@ -1205,11 +1205,11 @@ function 7th Heaven_init_isotope() {
 	// Check if all images in isotope wrapper are loaded
 	jQuery('.isotope_wrap:not(.inited)').each(function () {
 		"use strict";
-		all_images_complete = all_images_complete && 7th Heaven_check_images_complete(jQuery(this));
+		all_images_complete = all_images_complete && Jacqueline_check_images_complete(jQuery(this));
 	});
 	// Wait for images loading
-	if (!all_images_complete && 7th Heaven_STORAGE['isotope_init_counter']++ < 30) {
-		setTimeout(7th Heaven_init_isotope, 200);
+	if (!all_images_complete && Jacqueline_STORAGE['isotope_init_counter']++ < 30) {
+		setTimeout(Jacqueline_init_isotope, 200);
 		return;
 	}
 
@@ -1240,7 +1240,7 @@ function 7th Heaven_init_isotope() {
 		var isotope_container = jQuery(this);
 
 		// Init shortcodes
-		7th Heaven_sc_init(isotope_container);
+		Jacqueline_sc_init(isotope_container);
 
 		// If in scroll container - no init isotope
 		if (isotope_container.parents('.sc_scroll').length > 0) {
@@ -1265,20 +1265,20 @@ function 7th Heaven_init_isotope() {
 			});
 			
 			// Resize Alter portfolio elements
-			7th Heaven_resize_alter_portfolio();
+			Jacqueline_resize_alter_portfolio();
 			
 		}, 500);
 
 	});		
 }
 
-function 7th Heaven_init_appended_isotope(posts_container, filters) {
+function Jacqueline_init_appended_isotope(posts_container, filters) {
 	"use strict";
 	
 	if (posts_container.parents('.sc_scroll_horizontal').length > 0) return;
 	
-	if (!7th Heaven_check_images_complete(posts_container) && 7th Heaven_STORAGE['isotope_init_counter']++ < 30) {
-		setTimeout(function() { 7th Heaven_init_appended_isotope(posts_container, filters); }, 200);
+	if (!Jacqueline_check_images_complete(posts_container) && Jacqueline_STORAGE['isotope_init_counter']++ < 30) {
+		setTimeout(function() { Jacqueline_init_appended_isotope(posts_container, filters); }, 200);
 		return;
 	}
 	// Add filters
@@ -1289,7 +1289,7 @@ function 7th Heaven_init_appended_isotope(posts_container, filters) {
 		}
 	}
 	// Init shortcodes in added elements
-	7th Heaven_sc_init(posts_container);
+	Jacqueline_sc_init(posts_container);
 	// Get added elements
 	var elems = posts_container.find('.isotope_item:not(.isotope_item_show)');
 	// Notify isotope about added elements with timeout
@@ -1305,19 +1305,19 @@ function 7th Heaven_init_appended_isotope(posts_container, filters) {
 // Post formats init
 //=====================================================
 
-function 7th Heaven_init_post_formats() {
+function Jacqueline_init_post_formats() {
 	"use strict";
 
 	// Call theme specific action (if exists)
-	if (window.7th Heaven_theme_init_post_formats) 7th Heaven_theme_init_post_formats();
+	if (window.Jacqueline_theme_init_post_formats) Jacqueline_theme_init_post_formats();
 
 	// MediaElement init
-	7th Heaven_init_media_elements(jQuery('body'));
+	Jacqueline_init_media_elements(jQuery('body'));
 	
 	// Isotope first init
 	if (jQuery('.isotope_wrap:not(.inited)').length > 0) {
-		7th Heaven_STORAGE['isotope_init_counter'] = 0;
-		7th Heaven_init_isotope();
+		Jacqueline_STORAGE['isotope_init_counter'] = 0;
+		Jacqueline_init_isotope();
 	}
 
 	// Hover Effect 'Dir'
@@ -1328,7 +1328,7 @@ function 7th Heaven_init_post_formats() {
 	}
 
 	// Popup init
-	if (7th Heaven_STORAGE['popup_engine'] == 'pretty') {
+	if (Jacqueline_STORAGE['popup_engine'] == 'pretty') {
 		jQuery("a[href$='jpg'],a[href$='jpeg'],a[href$='png'],a[href$='gif']").attr('rel', 'prettyPhoto[slideshow]');
 		var images = jQuery("a[rel*='prettyPhoto']:not(.inited):not(.esgbox):not([data-rel*='pretty']):not([rel*='magnific']):not([data-rel*='magnific'])").addClass('inited');
 		try {
@@ -1338,7 +1338,7 @@ function 7th Heaven_init_post_formats() {
 				deeplinking: false
 			});
 		} catch (e) {};
-	} else if (7th Heaven_STORAGE['popup_engine']=='magnific') {
+	} else if (Jacqueline_STORAGE['popup_engine']=='magnific') {
 		jQuery("a[href$='jpg'],a[href$='jpeg'],a[href$='png'],a[href$='gif']").attr('rel', 'magnific');
 		var images = jQuery("a[rel*='magnific']:not(.inited):not(.esgbox):not(.prettyphoto):not([rel*='pretty']):not([data-rel*='pretty'])").addClass('inited');
 		try {
@@ -1375,11 +1375,11 @@ function 7th Heaven_init_post_formats() {
 				var inc = button.hasClass('enabled') ? 1 : -1;
 				var post_id = button.data('postid');
 				var likes = Number(button.data('likes'))+inc;
-				var cookie_likes = 7th Heaven_get_cookie('7th Heaven_likes');
+				var cookie_likes = Jacqueline_get_cookie('Jacqueline_likes');
 				if (cookie_likes === undefined || cookie_likes===null) cookie_likes = '';
-				jQuery.post(7th Heaven_STORAGE['ajax_url'], {
+				jQuery.post(Jacqueline_STORAGE['ajax_url'], {
 					action: 'post_counter',
-					nonce: 7th Heaven_STORAGE['ajax_nonce'],
+					nonce: Jacqueline_STORAGE['ajax_nonce'],
 					post_id: post_id,
 					likes: likes
 				}).done(function(response) {
@@ -1387,7 +1387,7 @@ function 7th Heaven_init_post_formats() {
 					try {
 						rez = JSON.parse(response);
 					} catch (e) {
-						rez = { error: 7th Heaven_STORAGE['ajax_error'] };
+						rez = { error: Jacqueline_STORAGE['ajax_error'] };
 						console.log(response);
 					}
 					if (rez.error === '') {
@@ -1401,9 +1401,9 @@ function 7th Heaven_init_post_formats() {
 							cookie_likes = cookie_likes.replace(','+post_id+',', ',');
 						}
 						button.data('likes', likes).attr('title', title).find('.post_counters_number').html(likes);
-						7th Heaven_set_cookie('7th Heaven_likes', cookie_likes, 365);
+						Jacqueline_set_cookie('Jacqueline_likes', cookie_likes, 365);
 					} else {
-						7th Heaven_message_warning(7th Heaven_STORAGE['strings']['error_like']);
+						Jacqueline_message_warning(Jacqueline_STORAGE['strings']['error_like']);
 					}
 				});
 				e.preventDefault();
@@ -1438,11 +1438,11 @@ function 7th Heaven_init_post_formats() {
 					var video = jQuery(this).removeClass('sc_video_play_button hover_icon hover_icon_play').data('video');
 					if (video!=='') {
 						jQuery(this).empty().html(video);
-						7th Heaven_video_dimensions();
+						Jacqueline_video_dimensions();
 						var video_tag = jQuery(this).find('video');
 						var w = video_tag.width();
 						var h = video_tag.height();
-						7th Heaven_init_media_elements(jQuery(this));
+						Jacqueline_init_media_elements(jQuery(this));
 						// Restore WxH attributes, because Chrome broke it!
 						jQuery(this).find('video').css({'width':w, 'height': h}).attr({'width':w, 'height': h});
 					}
@@ -1457,8 +1457,8 @@ function 7th Heaven_init_post_formats() {
 }
 
 
-function 7th Heaven_init_media_elements(cont) {
-	if (7th Heaven_STORAGE['media_elements_enabled'] && cont.find('audio,video').length > 0) {
+function Jacqueline_init_media_elements(cont) {
+	if (Jacqueline_STORAGE['media_elements_enabled'] && cont.find('audio,video').length > 0) {
 		if (window.mejs) {
 			window.mejs.MepDefaults.enableAutosize = false;
 			window.mejs.MediaElementDefaults.enableAutosize = false;
@@ -1490,7 +1490,7 @@ function 7th Heaven_init_media_elements(cont) {
 				}
 			});
 		} else
-			setTimeout(function() { 7th Heaven_init_media_elements(cont); }, 400);
+			setTimeout(function() { Jacqueline_init_media_elements(cont); }, 400);
 	}
 }
 
@@ -1503,29 +1503,29 @@ function 7th Heaven_init_media_elements(cont) {
 //==============================================
 
 // Show system message (bubble from previous page)
-function 7th Heaven_show_system_message() {
-	if (7th Heaven_STORAGE['system_message'] && 7th Heaven_STORAGE['system_message']['message']) {
-		if (7th Heaven_STORAGE['system_message']['status'] == 'success')
-			7th Heaven_message_success(7th Heaven_STORAGE['system_message']['message'], 7th Heaven_STORAGE['system_message']['header']);
-		else if (7th Heaven_STORAGE['system_message']['status'] == 'info')
-			7th Heaven_message_info(7th Heaven_STORAGE['system_message']['message'], 7th Heaven_STORAGE['system_message']['header']);
-		else if (7th Heaven_STORAGE['system_message']['status'] == 'error' || 7th Heaven_STORAGE['system_message']['status'] == 'warning')
-			7th Heaven_message_warning(7th Heaven_STORAGE['system_message']['message'], 7th Heaven_STORAGE['system_message']['header']);
+function Jacqueline_show_system_message() {
+	if (Jacqueline_STORAGE['system_message'] && Jacqueline_STORAGE['system_message']['message']) {
+		if (Jacqueline_STORAGE['system_message']['status'] == 'success')
+			Jacqueline_message_success(Jacqueline_STORAGE['system_message']['message'], Jacqueline_STORAGE['system_message']['header']);
+		else if (Jacqueline_STORAGE['system_message']['status'] == 'info')
+			Jacqueline_message_info(Jacqueline_STORAGE['system_message']['message'], Jacqueline_STORAGE['system_message']['header']);
+		else if (Jacqueline_STORAGE['system_message']['status'] == 'error' || Jacqueline_STORAGE['system_message']['status'] == 'warning')
+			Jacqueline_message_warning(Jacqueline_STORAGE['system_message']['message'], Jacqueline_STORAGE['system_message']['header']);
 	}
 }
 
 // Toggle popups
-function 7th Heaven_toggle_popup(popup) {
+function Jacqueline_toggle_popup(popup) {
 	if (popup.css('display')!='none')
-		7th Heaven_hide_popup(popup);
+		Jacqueline_hide_popup(popup);
 	else
-		7th Heaven_show_popup(popup);
+		Jacqueline_show_popup(popup);
 }
 
 // Show popups
-function 7th Heaven_show_popup(popup) {
+function Jacqueline_show_popup(popup) {
 	if (popup.css('display')=='none') {
-		if (7th Heaven_STORAGE['css_animation'])
+		if (Jacqueline_STORAGE['css_animation'])
 			popup.show().removeClass('animated fast fadeOut').addClass('animated fast fadeIn');
 		else
 			popup.slideDown();
@@ -1533,10 +1533,10 @@ function 7th Heaven_show_popup(popup) {
 }
 
 // Hide popups
-function 7th Heaven_hide_popup(popup) {
+function Jacqueline_hide_popup(popup) {
 	if (popup.css('display')!='none') {
-		if (7th Heaven_STORAGE['css_animation'])
-			popup.removeClass('animated fast '+7th Heaven_STORAGE['menu_animation_in']).addClass('animated fast '+7th Heaven_STORAGE['menu_animation_out']).delay(500).hide();
+		if (Jacqueline_STORAGE['css_animation'])
+			popup.removeClass('animated fast '+Jacqueline_STORAGE['menu_animation_in']).addClass('animated fast '+Jacqueline_STORAGE['menu_animation_out']).delay(500).hide();
 		else
 			popup.fadeOut();
 	}
@@ -1550,11 +1550,11 @@ function 7th Heaven_hide_popup(popup) {
 
 
 // Comments form
-function 7th Heaven_comments_validate(form) {
+function Jacqueline_comments_validate(form) {
 	"use strict";
 	form.find('input').removeClass('error_fields_class');
 	var rules = {
-		error_message_text: 7th Heaven_STORAGE['strings']['error_global'],	// Global error message text (if don't write in checked field)
+		error_message_text: Jacqueline_STORAGE['strings']['error_global'],	// Global error message text (if don't write in checked field)
 		error_message_show: true,									// Display or not error message
 		error_message_time: 4000,									// Error message display time
 		error_message_class: 'sc_infobox sc_infobox_style_error',	// Class appended to error message block
@@ -1563,8 +1563,8 @@ function 7th Heaven_comments_validate(form) {
 		rules: [
 			{
 				field: 'comment',
-				min_length: { value: 1, message: 7th Heaven_STORAGE['strings']['text_empty'] },
-				max_length: { value: 7th Heaven_STORAGE['comments_maxlength'], message: 7th Heaven_STORAGE['strings']['text_long']}
+				min_length: { value: 1, message: Jacqueline_STORAGE['strings']['text_empty'] },
+				max_length: { value: Jacqueline_STORAGE['comments_maxlength'], message: Jacqueline_STORAGE['strings']['text_long']}
 			}
 		]
 	};
@@ -1572,8 +1572,8 @@ function 7th Heaven_comments_validate(form) {
 		rules.rules.push(
 			{
 				field: 'author',
-				min_length: { value: 1, message: 7th Heaven_STORAGE['strings']['name_empty']},
-				max_length: { value: 60, message: 7th Heaven_STORAGE['strings']['name_long']}
+				min_length: { value: 1, message: Jacqueline_STORAGE['strings']['name_empty']},
+				max_length: { value: 60, message: Jacqueline_STORAGE['strings']['name_long']}
 			}
 		);
 	}
@@ -1581,22 +1581,22 @@ function 7th Heaven_comments_validate(form) {
 		rules.rules.push(
 			{
 				field: 'email',
-				min_length: { value: 7, message: 7th Heaven_STORAGE['strings']['email_empty']},
-				max_length: { value: 60, message: 7th Heaven_STORAGE['strings']['email_long']},
-				mask: { value: 7th Heaven_STORAGE['email_mask'], message: 7th Heaven_STORAGE['strings']['email_not_valid']}
+				min_length: { value: 7, message: Jacqueline_STORAGE['strings']['email_empty']},
+				max_length: { value: 60, message: Jacqueline_STORAGE['strings']['email_long']},
+				mask: { value: Jacqueline_STORAGE['email_mask'], message: Jacqueline_STORAGE['strings']['email_not_valid']}
 			}
 		);
 	}
-	var error = 7th Heaven_form_validate(form, rules);
+	var error = Jacqueline_form_validate(form, rules);
 	return !error;
 }
 
 
 // Login form
-function 7th Heaven_login_validate(form) {
+function Jacqueline_login_validate(form) {
 	"use strict";
 	form.find('input').removeClass('error_fields_class');
-	var error = 7th Heaven_form_validate(form, {
+	var error = Jacqueline_form_validate(form, {
 		error_message_show: true,
 		error_message_time: 4000,
 		error_message_class: 'sc_infobox sc_infobox_style_error',
@@ -1605,20 +1605,20 @@ function 7th Heaven_login_validate(form) {
 		rules: [
 			{
 				field: "log",
-				min_length: { value: 1, message: 7th Heaven_STORAGE['strings']['login_empty'] },
-				max_length: { value: 60, message: 7th Heaven_STORAGE['strings']['login_long'] }
+				min_length: { value: 1, message: Jacqueline_STORAGE['strings']['login_empty'] },
+				max_length: { value: 60, message: Jacqueline_STORAGE['strings']['login_long'] }
 			},
 			{
 				field: "pwd",
-				min_length: { value: 4, message: 7th Heaven_STORAGE['strings']['password_empty'] },
-				max_length: { value: 30, message: 7th Heaven_STORAGE['strings']['password_long'] }
+				min_length: { value: 4, message: Jacqueline_STORAGE['strings']['password_empty'] },
+				max_length: { value: 30, message: Jacqueline_STORAGE['strings']['password_long'] }
 			}
 		]
 	});
 	if (!error) {
-		jQuery.post(7th Heaven_STORAGE['ajax_url'], {
+		jQuery.post(Jacqueline_STORAGE['ajax_url'], {
 			action: 'login_user',
-			nonce: 7th Heaven_STORAGE['ajax_nonce'],
+			nonce: Jacqueline_STORAGE['ajax_nonce'],
 			remember: form.find('#rememberme').val(),
 			user_log: form.find('#log').val(),
 			user_pwd: form.find('#password').val()
@@ -1627,7 +1627,7 @@ function 7th Heaven_login_validate(form) {
 			try {
 				rez = JSON.parse(response);
 			} catch (e) {
-				rez = { error: 7th Heaven_STORAGE['ajax_error'] };
+				rez = { error: Jacqueline_STORAGE['ajax_error'] };
 				console.log(response);
 			}
 			var result_box = form.find('.result');
@@ -1635,12 +1635,12 @@ function 7th Heaven_login_validate(form) {
 			if (result_box.length==0) result_box = form.after('<div class="result"></div>').next('.result');
 			result_box.toggleClass('sc_infobox_style_error', false).toggleClass('sc_infobox_style_success', false);
 			if (rez.error === '') {
-				result_box.addClass('sc_infobox sc_infobox_style_success').html(7th Heaven_STORAGE['strings']['login_success']);
+				result_box.addClass('sc_infobox sc_infobox_style_success').html(Jacqueline_STORAGE['strings']['login_success']);
 				setTimeout(function() { 
 					location.reload(); 
 					}, 3000);
 			} else {
-				result_box.addClass('sc_infobox sc_infobox_style_error').html(7th Heaven_STORAGE['strings']['login_failed'] + '<br>' + rez.error);
+				result_box.addClass('sc_infobox sc_infobox_style_error').html(Jacqueline_STORAGE['strings']['login_failed'] + '<br>' + rez.error);
 			}
 			result_box.fadeIn().delay(3000).fadeOut();
 		});
@@ -1650,10 +1650,10 @@ function 7th Heaven_login_validate(form) {
 
 
 // Registration form 
-function 7th Heaven_registration_validate(form) {
+function Jacqueline_registration_validate(form) {
 	"use strict";
 	form.find('input').removeClass('error_fields_class');
-	var error = 7th Heaven_form_validate(form, {
+	var error = Jacqueline_form_validate(form, {
 		error_message_show: true,
 		error_message_time: 4000,
 		error_message_class: "sc_infobox sc_infobox_style_error",
@@ -1662,30 +1662,30 @@ function 7th Heaven_registration_validate(form) {
 		rules: [
 			{
 				field: "registration_username",
-				min_length: { value: 1, message: 7th Heaven_STORAGE['strings']['login_empty'] },
-				max_length: { value: 60, message: 7th Heaven_STORAGE['strings']['login_long'] }
+				min_length: { value: 1, message: Jacqueline_STORAGE['strings']['login_empty'] },
+				max_length: { value: 60, message: Jacqueline_STORAGE['strings']['login_long'] }
 			},
 			{
 				field: "registration_email",
-				min_length: { value: 7, message: 7th Heaven_STORAGE['strings']['email_empty'] },
-				max_length: { value: 60, message: 7th Heaven_STORAGE['strings']['email_long'] },
-				mask: { value: 7th Heaven_STORAGE['email_mask'], message: 7th Heaven_STORAGE['strings']['email_not_valid'] }
+				min_length: { value: 7, message: Jacqueline_STORAGE['strings']['email_empty'] },
+				max_length: { value: 60, message: Jacqueline_STORAGE['strings']['email_long'] },
+				mask: { value: Jacqueline_STORAGE['email_mask'], message: Jacqueline_STORAGE['strings']['email_not_valid'] }
 			},
 			{
 				field: "registration_pwd",
-				min_length: { value: 4, message: 7th Heaven_STORAGE['strings']['password_empty'] },
-				max_length: { value: 30, message: 7th Heaven_STORAGE['strings']['password_long'] }
+				min_length: { value: 4, message: Jacqueline_STORAGE['strings']['password_empty'] },
+				max_length: { value: 30, message: Jacqueline_STORAGE['strings']['password_long'] }
 			},
 			{
 				field: "registration_pwd2",
-				equal_to: { value: 'registration_pwd', message: 7th Heaven_STORAGE['strings']['password_not_equal'] }
+				equal_to: { value: 'registration_pwd', message: Jacqueline_STORAGE['strings']['password_not_equal'] }
 			}
 		]
 	});
 	if (!error) {
-		jQuery.post(7th Heaven_STORAGE['ajax_url'], {
+		jQuery.post(Jacqueline_STORAGE['ajax_url'], {
 			action: 'registration_user',
-			nonce: 7th Heaven_STORAGE['ajax_nonce'],
+			nonce: Jacqueline_STORAGE['ajax_nonce'],
 			user_name: 	form.find('#registration_username').val(),
 			user_email: form.find('#registration_email').val(),
 			user_pwd: 	form.find('#registration_pwd').val()
@@ -1694,7 +1694,7 @@ function 7th Heaven_registration_validate(form) {
 			try {
 				rez = JSON.parse(response);
 			} catch (e) {
-				rez = { error: 7th Heaven_STORAGE['ajax_error'] };
+				rez = { error: Jacqueline_STORAGE['ajax_error'] };
 				console.log(response);
 			}
 			var result_box = form.find('.result');
@@ -1702,12 +1702,12 @@ function 7th Heaven_registration_validate(form) {
 			if (result_box.length==0) result_box = form.after('<div class="result"></div>').next('.result');
 			result_box.toggleClass('sc_infobox_style_error', false).toggleClass('sc_infobox_style_success', false);
 			if (rez.error === '') {
-				result_box.addClass('sc_infobox sc_infobox_style_success').html(7th Heaven_STORAGE['strings']['registration_success']);
+				result_box.addClass('sc_infobox sc_infobox_style_success').html(Jacqueline_STORAGE['strings']['registration_success']);
 				setTimeout(function() { 
 					jQuery('.popup_login_link').trigger('click'); 
 					}, 3000);
 			} else {
-				result_box.addClass('sc_infobox sc_infobox_style_error').html(7th Heaven_STORAGE['strings']['registration_failed'] + ' ' + rez.error);
+				result_box.addClass('sc_infobox sc_infobox_style_error').html(Jacqueline_STORAGE['strings']['registration_failed'] + ' ' + rez.error);
 			}
 			result_box.fadeIn().delay(3000).fadeOut();
 		});

@@ -1,49 +1,49 @@
 
-if (typeof 7th Heaven_STORAGE == 'undefined') var 7th Heaven_STORAGE = {};
-7th Heaven_STORAGE['ajax_url'] = '';
-7th Heaven_STORAGE['ajax_nonce'] = '';
-7th Heaven_STORAGE['site_url'] = '';
-7th Heaven_STORAGE['sc_edit_mode'] = false;
-7th Heaven_STORAGE['theme_font'] = 'Droid Serif';
-7th Heaven_STORAGE['theme_skin'] = 'less';
-7th Heaven_STORAGE['theme_skin_color'] = '#323232';
-7th Heaven_STORAGE['theme_skin_bg_color'] = '#ffffff';
-7th Heaven_STORAGE['slider_height'] = 100;
-7th Heaven_STORAGE['system_message'] = {
+if (typeof Jacqueline_STORAGE == 'undefined') var Jacqueline_STORAGE = {};
+Jacqueline_STORAGE['ajax_url'] = '';
+Jacqueline_STORAGE['ajax_nonce'] = '';
+Jacqueline_STORAGE['site_url'] = '';
+Jacqueline_STORAGE['sc_edit_mode'] = false;
+Jacqueline_STORAGE['theme_font'] = 'Droid Serif';
+Jacqueline_STORAGE['theme_skin'] = 'less';
+Jacqueline_STORAGE['theme_skin_color'] = '#323232';
+Jacqueline_STORAGE['theme_skin_bg_color'] = '#ffffff';
+Jacqueline_STORAGE['slider_height'] = 100;
+Jacqueline_STORAGE['system_message'] = {
     message: '',
     status: '',
     header: ''
 };
-7th Heaven_STORAGE['user_logged_in'] = false;
-7th Heaven_STORAGE['toc_menu'] = '';
-7th Heaven_STORAGE['toc_menu_home'] = false;
-7th Heaven_STORAGE['toc_menu_top'] = false;
-7th Heaven_STORAGE['menu_fixed'] = true;
-7th Heaven_STORAGE['menu_mobile'] = 1024;
-7th Heaven_STORAGE['menu_slider'] = true;
-7th Heaven_STORAGE['menu_cache'] = false;
-7th Heaven_STORAGE['demo_time'] = 0;
-7th Heaven_STORAGE['media_elements_enabled'] = true;
-7th Heaven_STORAGE['ajax_search_enabled'] = true;
-7th Heaven_STORAGE['ajax_search_min_length'] = 3;
-7th Heaven_STORAGE['ajax_search_delay'] = 200;
-7th Heaven_STORAGE['css_animation'] = true;
-7th Heaven_STORAGE['menu_animation_in'] = 'fadeInUp';
-7th Heaven_STORAGE['menu_animation_out'] = 'fadeOutDown';
-7th Heaven_STORAGE['popup_engine'] = 'magnific';
-7th Heaven_STORAGE['email_mask'] = '^([a-zA-Z0-9_\-]+\.)*[a-zA-Z0-9_\-]+@[a-z0-9_\-]+(\.[a-z0-9_\-]+)*\.[a-z]{2,6}$';
-7th Heaven_STORAGE['contacts_maxlength'] = 1000;
-7th Heaven_STORAGE['comments_maxlength'] = 1000;
-7th Heaven_STORAGE['remember_visitors_settings'] = false;
-7th Heaven_STORAGE['admin_mode'] = false;
-7th Heaven_STORAGE['isotope_resize_delta'] = 0.3;
-7th Heaven_STORAGE['error_message_box'] = null;
-7th Heaven_STORAGE['viewmore_busy'] = false;
-7th Heaven_STORAGE['video_resize_inited'] = false;
-7th Heaven_STORAGE['top_panel_height'] = 0;
+Jacqueline_STORAGE['user_logged_in'] = false;
+Jacqueline_STORAGE['toc_menu'] = '';
+Jacqueline_STORAGE['toc_menu_home'] = false;
+Jacqueline_STORAGE['toc_menu_top'] = false;
+Jacqueline_STORAGE['menu_fixed'] = true;
+Jacqueline_STORAGE['menu_mobile'] = 1024;
+Jacqueline_STORAGE['menu_slider'] = true;
+Jacqueline_STORAGE['menu_cache'] = false;
+Jacqueline_STORAGE['demo_time'] = 0;
+Jacqueline_STORAGE['media_elements_enabled'] = true;
+Jacqueline_STORAGE['ajax_search_enabled'] = true;
+Jacqueline_STORAGE['ajax_search_min_length'] = 3;
+Jacqueline_STORAGE['ajax_search_delay'] = 200;
+Jacqueline_STORAGE['css_animation'] = true;
+Jacqueline_STORAGE['menu_animation_in'] = 'fadeInUp';
+Jacqueline_STORAGE['menu_animation_out'] = 'fadeOutDown';
+Jacqueline_STORAGE['popup_engine'] = 'magnific';
+Jacqueline_STORAGE['email_mask'] = '^([a-zA-Z0-9_\-]+\.)*[a-zA-Z0-9_\-]+@[a-z0-9_\-]+(\.[a-z0-9_\-]+)*\.[a-z]{2,6}$';
+Jacqueline_STORAGE['contacts_maxlength'] = 1000;
+Jacqueline_STORAGE['comments_maxlength'] = 1000;
+Jacqueline_STORAGE['remember_visitors_settings'] = false;
+Jacqueline_STORAGE['admin_mode'] = false;
+Jacqueline_STORAGE['isotope_resize_delta'] = 0.3;
+Jacqueline_STORAGE['error_message_box'] = null;
+Jacqueline_STORAGE['viewmore_busy'] = false;
+Jacqueline_STORAGE['video_resize_inited'] = false;
+Jacqueline_STORAGE['top_panel_height'] = 0;
 
-if (typeof 7th Heaven_STORAGE == 'undefined') var 7th Heaven_STORAGE = {};
-7th Heaven_STORAGE["strings"] = {
+if (typeof Jacqueline_STORAGE == 'undefined') var Jacqueline_STORAGE = {};
+Jacqueline_STORAGE["strings"] = {
     ajax_error: "Invalid server answer",
     bookmark_add: "Add the bookmark",
     bookmark_added: "Current page has been successfully added to the bookmarks. You can see it in the right panel on the tab &#039;Bookmarks&#039;",
@@ -574,7 +574,7 @@ function initEssGrid() {
 			lazyLoad: "off",
 			row: 4,
 			loadMoreAjaxToken: "86b85e54a7",
-			loadMoreAjaxUrl: "http://7th Heaven.themerex.net/wp-admin/admin-ajax.php",
+			loadMoreAjaxUrl: "http://Jacqueline.themerex.net/wp-admin/admin-ajax.php",
 			loadMoreAjaxAction: "Essential_Grid_Front_request_ajax",
 			ajaxContentTarget: "ess-grid-ajax-container-",
 			ajaxScrollToOffset: "0",
@@ -693,7 +693,7 @@ function initEssGrid() {
 				lazyLoad: "off",
 				row: 4,
 				loadMoreAjaxToken: "cd6392df0f",
-				loadMoreAjaxUrl: "http://7th Heaven.themerex.net/wp-admin/admin-ajax.php",
+				loadMoreAjaxUrl: "http://Jacqueline.themerex.net/wp-admin/admin-ajax.php",
 				loadMoreAjaxAction: "Essential_Grid_Front_request_ajax",
 				ajaxContentTarget: "ess-grid-ajax-container-",
 				ajaxScrollToOffset: "0",
@@ -876,7 +876,7 @@ function initEssGrid() {
 			lazyLoad: "off",
 			row: 3,
 			loadMoreAjaxToken: "312913dafa",
-			loadMoreAjaxUrl: "http://7th Heaven.themerex.net/wp-admin/admin-ajax.php",
+			loadMoreAjaxUrl: "http://Jacqueline.themerex.net/wp-admin/admin-ajax.php",
 			loadMoreAjaxAction: "Essential_Grid_Front_request_ajax",
 			ajaxContentTarget: "ess-grid-ajax-container-",
 			ajaxScrollToOffset: "0",
@@ -1016,7 +1016,7 @@ function initEssGrid() {
 			lazyLoad: "off",
 			row: 9,
 			loadMoreAjaxToken: "22042c4941",
-			loadMoreAjaxUrl: "http://7th Heaven.themerex.net/wp-admin/admin-ajax.php",
+			loadMoreAjaxUrl: "http://Jacqueline.themerex.net/wp-admin/admin-ajax.php",
 			loadMoreAjaxAction: "Essential_Grid_Front_request_ajax",
 			ajaxContentTarget: "ess-grid-ajax-container-",
 			ajaxScrollToOffset: "0",
@@ -1201,7 +1201,7 @@ function initEssGrid() {
 			lazyLoad: "off",
 			row: 9,
 			loadMoreAjaxToken: "22042c4941",
-			loadMoreAjaxUrl: "http://7th Heaven.themerex.net/wp-admin/admin-ajax.php",
+			loadMoreAjaxUrl: "http://Jacqueline.themerex.net/wp-admin/admin-ajax.php",
 			loadMoreAjaxAction: "Essential_Grid_Front_request_ajax",
 			ajaxContentTarget: "ess-grid-ajax-container-",
 			ajaxScrollToOffset: "0",
@@ -1384,7 +1384,7 @@ jQuery(document).ready(function() {
         lazyLoad: "off",
         row: 9,
         loadMoreAjaxToken: "8d6a7d5c1e",
-        loadMoreAjaxUrl: "http://7th Heaven.themerex.net/wp-admin/admin-ajax.php",
+        loadMoreAjaxUrl: "http://Jacqueline.themerex.net/wp-admin/admin-ajax.php",
         loadMoreAjaxAction: "Essential_Grid_Front_request_ajax",
         ajaxContentTarget: "ess-grid-ajax-container-",
         ajaxScrollToOffset: "0",
@@ -1482,19 +1482,19 @@ jQuery(document).ready(function() {
 
 function itemsmenu(){
 	
-	if (7th Heaven_STORAGE['menuitems'] === undefined) 7th Heaven_STORAGE['menuitems'] = [];
-	7th Heaven_STORAGE['menuitems']['sc_menuitems_874'] = '475,482,483,484,480,479,478,457';
+	if (Jacqueline_STORAGE['menuitems'] === undefined) Jacqueline_STORAGE['menuitems'] = [];
+	Jacqueline_STORAGE['menuitems']['sc_menuitems_874'] = '475,482,483,484,480,479,478,457';
 	
-	if (7th Heaven_STORAGE['menuitems'] === undefined) 7th Heaven_STORAGE['menuitems'] = [];
-	7th Heaven_STORAGE['menuitems']['sc_menuitems_276809688'] = '482,484,457';
+	if (Jacqueline_STORAGE['menuitems'] === undefined) Jacqueline_STORAGE['menuitems'] = [];
+	Jacqueline_STORAGE['menuitems']['sc_menuitems_276809688'] = '482,484,457';
 	
-	if (7th Heaven_STORAGE['menuitems'] === undefined) 7th Heaven_STORAGE['menuitems'] = [];
-	7th Heaven_STORAGE['menuitems']['sc_menuitems_1468493844'] = '475,483,478,457';
+	if (Jacqueline_STORAGE['menuitems'] === undefined) Jacqueline_STORAGE['menuitems'] = [];
+	Jacqueline_STORAGE['menuitems']['sc_menuitems_1468493844'] = '475,483,478,457';
 	
-	if (7th Heaven_STORAGE['menuitems'] === undefined) 7th Heaven_STORAGE['menuitems'] = [];
-	7th Heaven_STORAGE['menuitems']['sc_menuitems_1484465773'] = '475,483,480,479';
+	if (Jacqueline_STORAGE['menuitems'] === undefined) Jacqueline_STORAGE['menuitems'] = [];
+	Jacqueline_STORAGE['menuitems']['sc_menuitems_1484465773'] = '475,483,480,479';
 	
-	if (7th Heaven_STORAGE['menuitems'] === undefined) 7th Heaven_STORAGE['menuitems'] = [];
-	7th Heaven_STORAGE['menuitems']['sc_menuitems_683513523'] = '482,480,479,457';
+	if (Jacqueline_STORAGE['menuitems'] === undefined) Jacqueline_STORAGE['menuitems'] = [];
+	Jacqueline_STORAGE['menuitems']['sc_menuitems_683513523'] = '482,480,479,457';
 	
 };

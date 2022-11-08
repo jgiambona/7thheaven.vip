@@ -1,10 +1,10 @@
-function 7th Heaven_googlemap_init(dom_obj, coords) {
+function Jacqueline_googlemap_init(dom_obj, coords) {
 	"use strict";
-	if (typeof 7th Heaven_STORAGE['googlemap_init_obj'] == 'undefined') 7th Heaven_googlemap_init_styles();
-	7th Heaven_STORAGE['googlemap_init_obj'].geocoder = '';
+	if (typeof Jacqueline_STORAGE['googlemap_init_obj'] == 'undefined') Jacqueline_googlemap_init_styles();
+	Jacqueline_STORAGE['googlemap_init_obj'].geocoder = '';
 	try {
 		var id = dom_obj.id;
-		7th Heaven_STORAGE['googlemap_init_obj'][id] = {
+		Jacqueline_STORAGE['googlemap_init_obj'][id] = {
 			dom: dom_obj,
 			markers: coords.markers,
 			geocoder_request: false,
@@ -19,98 +19,98 @@ function 7th Heaven_googlemap_init(dom_obj, coords) {
 				mapTypeControl: false,
 				streetViewControl: false,
 				overviewMapControl: false,
-				styles: 7th Heaven_STORAGE['googlemap_styles'][coords.style ? coords.style : 'default'],
+				styles: Jacqueline_STORAGE['googlemap_styles'][coords.style ? coords.style : 'default'],
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			}
 		};
 		
-		7th Heaven_googlemap_create(id);
+		Jacqueline_googlemap_create(id);
 
 	} catch (e) {
 		
-		dcl(7th Heaven_STORAGE['strings']['googlemap_not_avail']);
+		dcl(Jacqueline_STORAGE['strings']['googlemap_not_avail']);
 
 	};
 }
 
-function 7th Heaven_googlemap_create(id) {
+function Jacqueline_googlemap_create(id) {
 	"use strict";
 
 	// Create map
-	7th Heaven_STORAGE['googlemap_init_obj'][id].map = new google.maps.Map(7th Heaven_STORAGE['googlemap_init_obj'][id].dom, 7th Heaven_STORAGE['googlemap_init_obj'][id].opt);
+	Jacqueline_STORAGE['googlemap_init_obj'][id].map = new google.maps.Map(Jacqueline_STORAGE['googlemap_init_obj'][id].dom, Jacqueline_STORAGE['googlemap_init_obj'][id].opt);
 
 	// Add markers
-	for (var i in 7th Heaven_STORAGE['googlemap_init_obj'][id].markers)
-		7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].inited = false;
-	7th Heaven_googlemap_add_markers(id);
+	for (var i in Jacqueline_STORAGE['googlemap_init_obj'][id].markers)
+		Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].inited = false;
+	Jacqueline_googlemap_add_markers(id);
 	
 	// Add resize listener
 	jQuery(window).resize(function() {
-		if (7th Heaven_STORAGE['googlemap_init_obj'][id].map)
-			7th Heaven_STORAGE['googlemap_init_obj'][id].map.setCenter(7th Heaven_STORAGE['googlemap_init_obj'][id].opt.center);
+		if (Jacqueline_STORAGE['googlemap_init_obj'][id].map)
+			Jacqueline_STORAGE['googlemap_init_obj'][id].map.setCenter(Jacqueline_STORAGE['googlemap_init_obj'][id].opt.center);
 	});
 }
 
-function 7th Heaven_googlemap_add_markers(id) {
+function Jacqueline_googlemap_add_markers(id) {
 	"use strict";
-	for (var i in 7th Heaven_STORAGE['googlemap_init_obj'][id].markers) {
+	for (var i in Jacqueline_STORAGE['googlemap_init_obj'][id].markers) {
 		
-		if (7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].inited) continue;
+		if (Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].inited) continue;
 		
-		if (7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].latlng == '') {
+		if (Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].latlng == '') {
 			
-			if (7th Heaven_STORAGE['googlemap_init_obj'][id].geocoder_request!==false) continue;
+			if (Jacqueline_STORAGE['googlemap_init_obj'][id].geocoder_request!==false) continue;
 			
-			if (7th Heaven_STORAGE['googlemap_init_obj'].geocoder == '') 7th Heaven_STORAGE['googlemap_init_obj'].geocoder = new google.maps.Geocoder();
-			7th Heaven_STORAGE['googlemap_init_obj'][id].geocoder_request = i;
-			7th Heaven_STORAGE['googlemap_init_obj'].geocoder.geocode({address: 7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].address}, function(results, status) {
+			if (Jacqueline_STORAGE['googlemap_init_obj'].geocoder == '') Jacqueline_STORAGE['googlemap_init_obj'].geocoder = new google.maps.Geocoder();
+			Jacqueline_STORAGE['googlemap_init_obj'][id].geocoder_request = i;
+			Jacqueline_STORAGE['googlemap_init_obj'].geocoder.geocode({address: Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].address}, function(results, status) {
 				"use strict";
 				if (status == google.maps.GeocoderStatus.OK) {
-					var idx = 7th Heaven_STORAGE['googlemap_init_obj'][id].geocoder_request;
+					var idx = Jacqueline_STORAGE['googlemap_init_obj'][id].geocoder_request;
 					if (results[0].geometry.location.lat && results[0].geometry.location.lng) {
-						7th Heaven_STORAGE['googlemap_init_obj'][id].markers[idx].latlng = '' + results[0].geometry.location.lat() + ',' + results[0].geometry.location.lng();
+						Jacqueline_STORAGE['googlemap_init_obj'][id].markers[idx].latlng = '' + results[0].geometry.location.lat() + ',' + results[0].geometry.location.lng();
 					} else {
-						7th Heaven_STORAGE['googlemap_init_obj'][id].markers[idx].latlng = results[0].geometry.location.toString().replace(/\(\)/g, '');
+						Jacqueline_STORAGE['googlemap_init_obj'][id].markers[idx].latlng = results[0].geometry.location.toString().replace(/\(\)/g, '');
 					}
-					7th Heaven_STORAGE['googlemap_init_obj'][id].geocoder_request = false;
+					Jacqueline_STORAGE['googlemap_init_obj'][id].geocoder_request = false;
 					setTimeout(function() { 
-						7th Heaven_googlemap_add_markers(id); 
+						Jacqueline_googlemap_add_markers(id); 
 						}, 200);
 				} else
-					dcl(7th Heaven_STORAGE['strings']['geocode_error'] + ' ' + status);
+					dcl(Jacqueline_STORAGE['strings']['geocode_error'] + ' ' + status);
 			});
 		
 		} else {
 			
 			// Prepare marker object
-			var latlngStr = 7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].latlng.split(',');
+			var latlngStr = Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].latlng.split(',');
 			var markerInit = {
-				map: 7th Heaven_STORAGE['googlemap_init_obj'][id].map,
+				map: Jacqueline_STORAGE['googlemap_init_obj'][id].map,
 				position: new google.maps.LatLng(latlngStr[0], latlngStr[1]),
-				clickable: 7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].description!=''
+				clickable: Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].description!=''
 			};
-			if (7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].point) markerInit.icon = 7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].point;
-			if (7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].title) markerInit.title = 7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].title;
-			7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].marker = new google.maps.Marker(markerInit);
+			if (Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].point) markerInit.icon = Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].point;
+			if (Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].title) markerInit.title = Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].title;
+			Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].marker = new google.maps.Marker(markerInit);
 			
 			// Set Map center
-			if (7th Heaven_STORAGE['googlemap_init_obj'][id].opt.center == null) {
-				7th Heaven_STORAGE['googlemap_init_obj'][id].opt.center = markerInit.position;
-				7th Heaven_STORAGE['googlemap_init_obj'][id].map.setCenter(7th Heaven_STORAGE['googlemap_init_obj'][id].opt.center);				
+			if (Jacqueline_STORAGE['googlemap_init_obj'][id].opt.center == null) {
+				Jacqueline_STORAGE['googlemap_init_obj'][id].opt.center = markerInit.position;
+				Jacqueline_STORAGE['googlemap_init_obj'][id].map.setCenter(Jacqueline_STORAGE['googlemap_init_obj'][id].opt.center);				
 			}
 			
 			// Add description window
-			if (7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].description!='') {
-				7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].infowindow = new google.maps.InfoWindow({
-					content: 7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].description
+			if (Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].description!='') {
+				Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].infowindow = new google.maps.InfoWindow({
+					content: Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].description
 				});
-				google.maps.event.addListener(7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].marker, "click", function(e) {
+				google.maps.event.addListener(Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].marker, "click", function(e) {
 					var latlng = e.latLng.toString().replace("(", '').replace(")", "").replace(" ", "");
-					for (var i in 7th Heaven_STORAGE['googlemap_init_obj'][id].markers) {
-						if (latlng == 7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].latlng) {
-							7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].infowindow.open(
-								7th Heaven_STORAGE['googlemap_init_obj'][id].map,
-								7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].marker
+					for (var i in Jacqueline_STORAGE['googlemap_init_obj'][id].markers) {
+						if (latlng == Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].latlng) {
+							Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].infowindow.open(
+								Jacqueline_STORAGE['googlemap_init_obj'][id].map,
+								Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].marker
 							);
 							break;
 						}
@@ -118,24 +118,24 @@ function 7th Heaven_googlemap_add_markers(id) {
 				});
 			}
 			
-			7th Heaven_STORAGE['googlemap_init_obj'][id].markers[i].inited = true;
+			Jacqueline_STORAGE['googlemap_init_obj'][id].markers[i].inited = true;
 		}
 	}
 }
 
-function 7th Heaven_googlemap_refresh() {
+function Jacqueline_googlemap_refresh() {
 	"use strict";
-	for (id in 7th Heaven_STORAGE['googlemap_init_obj']) {
-		7th Heaven_googlemap_create(id);
+	for (id in Jacqueline_STORAGE['googlemap_init_obj']) {
+		Jacqueline_googlemap_create(id);
 	}
 }
 
-function 7th Heaven_googlemap_init_styles() {
+function Jacqueline_googlemap_init_styles() {
 	// Init Google map
-	7th Heaven_STORAGE['googlemap_init_obj'] = {};
-	7th Heaven_STORAGE['googlemap_styles'] = {
+	Jacqueline_STORAGE['googlemap_init_obj'] = {};
+	Jacqueline_STORAGE['googlemap_styles'] = {
 		'default': []
 	};
-	if (window.7th Heaven_theme_googlemap_styles!==undefined)
-		7th Heaven_STORAGE['googlemap_styles'] = 7th Heaven_theme_googlemap_styles(7th Heaven_STORAGE['googlemap_styles']);
+	if (window.Jacqueline_theme_googlemap_styles!==undefined)
+		Jacqueline_STORAGE['googlemap_styles'] = Jacqueline_theme_googlemap_styles(Jacqueline_STORAGE['googlemap_styles']);
 }

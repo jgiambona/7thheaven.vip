@@ -1,10 +1,10 @@
 /* global jQuery:false */
-/* global 7th Heaven_STORAGE:false */
+/* global Jacqueline_STORAGE:false */
 
 
 // Theme-specific first load actions
 //==============================================
-function 7th Heaven_theme_ready_actions() {
+function Jacqueline_theme_ready_actions() {
 	"use strict";
 	// Put here your init code with theme-specific actions
 	// It will be called before core actions
@@ -13,7 +13,7 @@ function 7th Heaven_theme_ready_actions() {
 
 // Theme-specific scroll actions
 //==============================================
-function 7th Heaven_theme_scroll_actions() {
+function Jacqueline_theme_scroll_actions() {
 	"use strict";
 	// Put here your theme-specific code with scroll actions
 	// It will be called when page is scrolled (before core actions)
@@ -22,7 +22,7 @@ function 7th Heaven_theme_scroll_actions() {
 
 // Theme-specific resize actions
 //==============================================
-function 7th Heaven_theme_resize_actions() {
+function Jacqueline_theme_resize_actions() {
 	"use strict";
 	// Put here your theme-specific code with resize actions
 	// It will be called when window is resized (before core actions)
@@ -31,7 +31,7 @@ function 7th Heaven_theme_resize_actions() {
 
 // Theme-specific shortcodes init
 //=====================================================
-function 7th Heaven_theme_sc_init(cont) {
+function Jacqueline_theme_sc_init(cont) {
 	"use strict";
 	// Put here your theme-specific code to init shortcodes
 	// It will be called before core init shortcodes
@@ -41,7 +41,7 @@ function 7th Heaven_theme_sc_init(cont) {
 
 // Theme-specific post-formats init
 //=====================================================
-function 7th Heaven_theme_init_post_formats() {
+function Jacqueline_theme_init_post_formats() {
 	"use strict";
 	// Put here your theme-specific code to init post-formats
 	// It will be called before core init post_formats when page is loaded or after 'Load more' or 'Infinite scroll' actions
@@ -50,7 +50,7 @@ function 7th Heaven_theme_init_post_formats() {
 
 // Theme-specific GoogleMap styles
 //=====================================================
-function 7th Heaven_theme_googlemap_styles($styles) {
+function Jacqueline_theme_googlemap_styles($styles) {
 	"use strict";
 	// Put here your theme-specific code to add GoogleMap styles
 	// It will be called before GoogleMap init when page is loaded

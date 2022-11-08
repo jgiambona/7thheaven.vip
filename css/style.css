@@ -1,6 +1,6 @@
 @charset 'utf-8';
 /*
-Project:		7th Heaven HTML
+Project:		Jacqueline HTML
 Version:		1.2.1
 Last change:	20/12/2017
 Assigned to:	ThemeREX
@@ -5729,20 +5729,20 @@ footer.twitter_wrap .sc_section_overlay {
 .custom_options #co_toggle {
     right: -2.5625em!important;
 }
-.7th Heaven_profiler {
+.Jacqueline_profiler {
     background-color: #effcfc;
     apadding: 2em;
     border-top: 1px dashed #20c7ca;
 }
-.7th Heaven_profiler .profiler_title {
+.Jacqueline_profiler .profiler_title {
     margin-top: 0;
 }
-.7th Heaven_profiler table th,
-.7th Heaven_profiler table td {
+.Jacqueline_profiler table th,
+.Jacqueline_profiler table td {
     border: 1px solid #aaeeee!important;
     padding: 6px 8px;
 }
-.7th Heaven_profiler table th {
+.Jacqueline_profiler table th {
     background-color: #ddf0f0;
 }
 
